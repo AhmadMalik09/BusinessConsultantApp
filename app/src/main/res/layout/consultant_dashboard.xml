@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/consultant_dashboard_design"
+       />
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="1dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.025"
+        android:text="Consultant Dashboard"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/logOutB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/textView"
+        android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
+        android:src="@drawable/shutdown"
+        app:layout_constraintCircleRadius="24dp" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/view"
+        android:elevation="12dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/consultName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Consultant Name"
+                android:textAllCaps="true"
+                android:textColor="@color/app_background"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/expertise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Experties"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:layout_below="@id/consultName"
+                android:paddingLeft="17dp"
+                />
+           <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:layout_below="@id/expertise">
+
+           </RatingBar>
+
+            <ImageButton
+                android:id="@+id/profilePic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackground"
+                android:padding="10dp"
+                android:src="@drawable/consultant"
+                android:layout_toRightOf="@id/ratingBar"
+                android:layout_alignParentEnd="true"
+               />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:id="@+id/first_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="25dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/consult_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/consultant_square"
+            android:drawableTop="@drawable/consultant_profile"
+            android:paddingLeft="42dp"
+            android:paddingRight="42dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:text=" PROFILE"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/consult_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/consultant_square"
+            android:drawableTop="@drawable/profession"
+
+            android:text=" FIELD"
+            android:textColor="@color/black" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/second_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/first_row"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="25dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/consult_edu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/consultant_square"
+            android:drawableTop="@drawable/qualification"
+            android:padding="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="Qualification"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/consult_ratings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/consultant_square"
+            android:drawableTop="@drawable/ratings"
+            android:paddingLeft="41dp"
+            android:paddingRight="41dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Ratings"
+            android:textColor="@color/black" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/third_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/second_row"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="25dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/chat_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/consultant_square"
+            android:drawableTop="@drawable/chatbox"
+            android:paddingLeft="38dp"
+            android:paddingRight="38dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="CHAT BOX"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+
+            android:paddingLeft="36dp"
+            android:paddingRight="36dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/consultant_square"
+            android:drawableTop="@drawable/settings"
+
+            android:text="SETTINGS"
+            android:textColor="@color/black" />
+
+
+
+    </LinearLayout>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="770dp"
+        android:background="@color/white"
+        app:menu="@menu/menu"/>
+
+</RelativeLayout>

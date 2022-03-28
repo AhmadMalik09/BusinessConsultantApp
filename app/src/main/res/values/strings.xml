@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Business Consultant</string>
+    <string name="About_real_estate">Real estate is property consisting of land and the buildings on it, along with its natural resources such as crops, minerals or water; immovable property of this nature; an interest vested in this an item of real property, buildings or housing in general.</string>
+    <string name="oppertunities">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</string>
+    <string name="Profit_Loss">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</string>
+    <string name="oppertunities_against_investment">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</string>
+    <string name="default_web_client_id1" translatable="false">509726398343-v5na08qr549qi5dhnd4h8p5sno9oi3sg.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+
+    <string-array name="Field_Selection">
+        <item>Real-Estate</item>
+        <item>Stock-Market</item>
+        <item>Crypto-Currency</item>
+        <item>E-Commerce</item>
+        <item>Agriculture</item>
+        <item>Farming</item>
+        <item>IT</item>
+        <item>Enterpreneur</item>
+
+    </string-array>
+</resources>

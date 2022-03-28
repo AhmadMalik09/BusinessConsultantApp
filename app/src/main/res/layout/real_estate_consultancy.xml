@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#00ADC1">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
+        android:src="@drawable/estate"
+        ></ImageView>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/personalDetailsCard"
+        style="@style/centreLocatorCardDesign"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="50dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:focusableInTouchMode="false"
+            android:orientation="vertical"
+            android:padding="20dp"
+           >
+
+
+            <TextView
+                android:id="@+id/about_real_estate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What is Real Estate ?"
+                android:textSize="20sp"
+                android:background="@drawable/textview_background"
+                android:singleLine="true"
+                android:layout_marginBottom="15dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:onClick="onClick"
+                android:autoLink="all"/>
+
+                <TextView
+                    android:id="@+id/real_estate_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/About_real_estate"
+                    android:background="@drawable/invisible_textview_design"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:visibility='invisible'
+                    />
+
+
+                <TextView
+                    android:id="@+id/options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Oppertunities in your selected area ?"
+                    android:singleLine="true"
+                    android:background="@drawable/textview_background"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:onClick="onClick"
+                    android:autoLink="all"/>
+
+
+                <TextView
+                    android:id="@+id/investment_options_answer"
+                    style="@style/modifiedEditText"
+                    android:text="@string/oppertunities"
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:visibility='invisible'
+                    android:background="@drawable/invisible_textview_design"
+                    android:textColor="@color/black"
+                    />
+
+
+                <TextView
+                    android:id="@+id/profit_loss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profit and Loss Margin "
+                    android:singleLine="true"
+                    android:background="@drawable/textview_background"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:onClick="onClick"
+                    android:autoLink="all"/>
+
+
+                <TextView
+                    android:id="@+id/profit_loss_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Profit_Loss"
+                    android:visibility='invisible'
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:background="@drawable/invisible_textview_design"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:id="@+id/opportunity_against_investment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Options as per your amount"
+                    android:singleLine="true"
+                    android:textSize="20sp"
+                    android:background="@drawable/textview_background"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:onClick="onClick"
+                    android:autoLink="all"/>
+
+
+                <TextView
+                    android:id="@+id/opportunity_against_investment_ans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/oppertunities_against_investment"
+                    android:layout_marginBottom="5dp"
+                    android:padding="10dp"
+                    android:background="@drawable/invisible_textview_design"
+                    android:textColor="@color/black"
+                    android:visibility='invisible'
+                    />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="12"
+                android:gravity="center"
+                android:layout_marginTop="30dp">
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="2dp"
+                    android:background="#00ADC1"
+                    android:layout_weight="3"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="For More Info "
+                    android:layout_weight="6"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"/>
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="2dp"
+                    android:background="#00ADC1"
+                    android:layout_weight="3"/>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/real_estate_consultant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/login_button_design"
+                android:text="Chat with Consultant"
+
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</ScrollView>
+
+</RelativeLayout>

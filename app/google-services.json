@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509726398343",
+    "project_id": "business-consultant-app",
+    "storage_bucket": "business-consultant-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509726398343:android:228dab851a90761ea56522",
+        "android_client_info": {
+          "package_name": "pk.edu.uiit.businessconsultant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509726398343-v5na08qr549qi5dhnd4h8p5sno9oi3sg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYTQKahWEiCkplvm3aAYYIvg_36dq_BJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509726398343-v5na08qr549qi5dhnd4h8p5sno9oi3sg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
