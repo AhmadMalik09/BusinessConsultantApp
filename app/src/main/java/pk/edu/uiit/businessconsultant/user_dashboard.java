@@ -1,6 +1,8 @@
 package pk.edu.uiit.businessconsultant;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -133,12 +135,27 @@ public class user_dashboard extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setTitle("Please Wait...");
-                progressDialog.setMessage("Logging out....");
-                FirebaseAuth.getInstance().signOut();
-                Intent intent=new Intent(user_dashboard.this,login.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                user_dashboard.this.startActivity(intent);
+                AlertDialog.Builder builder= new AlertDialog.Builder(user_dashboard.this);
+                builder.setMessage("Do you want to Exit ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                FirebaseAuth.getInstance().signOut();
+                                Intent intent=new Intent(user_dashboard.this,login.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                user_dashboard.this.startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                    AlertDialog alertDialog=builder.create();
+                    alertDialog.show();
+
             }
         });
     }

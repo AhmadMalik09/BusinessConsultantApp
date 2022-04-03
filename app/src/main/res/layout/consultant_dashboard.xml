@@ -99,17 +99,18 @@
 
            </RatingBar>
 
-            <ImageButton
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="?attr/selectableItemBackground"
-                android:padding="10dp"
-                android:src="@drawable/consultant"
-                android:layout_toRightOf="@id/ratingBar"
-                android:layout_alignParentEnd="true"
-               />
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/profile"
+                app:civ_border_color="#00ADC1"
+                android:layout_gravity="center"
+                app:civ_border_width="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentEnd="true"/>
+
 
         </RelativeLayout>
 

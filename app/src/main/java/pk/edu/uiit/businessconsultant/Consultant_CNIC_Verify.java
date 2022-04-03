@@ -169,7 +169,7 @@ private void  saveCNIC_Back_ToFirebase(){
                                     public void onSuccess(Void unused) {
                                         progressDialog.dismiss();
                                         Toast.makeText(Consultant_CNIC_Verify.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Consultant_CNIC_Verify.this, Consultant_Dashboard.class));
+                                        startActivity(new Intent(Consultant_CNIC_Verify.this,login.class));
                                         finish();
                                     }
                                 })

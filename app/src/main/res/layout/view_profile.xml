@@ -25,13 +25,16 @@
                 android:src="@drawable/icon_back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <ImageView
-                android:id="@+id/profile"
-                android:layout_marginTop="45dp"
-                android:layout_gravity="center_horizontal"
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/consultantProfile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/profile"/>
+                android:src="@drawable/profile"
+                app:civ_border_color="#00ADC1"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                app:civ_border_width="2dp" />
             <TextView
                 android:id="@+id/name"
                 android:layout_marginTop="10dp"

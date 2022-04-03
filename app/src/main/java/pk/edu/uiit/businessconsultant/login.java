@@ -89,14 +89,14 @@ private void perform_action(){
                                 {
                                     progressDialog.dismiss();
                                     // User Is Consultant
-                                    startActivity(new Intent(login.this, user_dashboard.class));
+                                    startActivity(new Intent(login.this, Consultant_Dashboard.class));
                                     finish();
                                 }
                                 if (accountType.equals("User"))
                                 {
                                     progressDialog.dismiss();
                                     // User
-                                    startActivity(new Intent(login.this, Consultant_Dashboard.class));
+                                    startActivity(new Intent(login.this, user_dashboard.class));
                                     finish();
                                 }
 

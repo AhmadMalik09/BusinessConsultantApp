@@ -31,8 +31,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.HashMap;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Consultant_Registeration extends AppCompatActivity {
@@ -49,6 +47,8 @@ public class Consultant_Registeration extends AppCompatActivity {
     String CNIC_No;
     String Degree;
     String Specifitication;
+    String profileImage;
+    String  accountType;
     FloatingActionButton uploadProfilePic;
     Uri Imageuri;
     // FirebaseAuth
@@ -116,6 +116,9 @@ public class Consultant_Registeration extends AppCompatActivity {
         CNIC_No=CNIC.getText().toString().trim();
         Degree= Qualification.getText().toString().trim();
         Specifitication = specification.getText().toString().trim();
+        accountType="Consultant";
+        profileImage=Imageuri.toString();
+
      if (TextUtils.isEmpty(Name)) {
          Toast.makeText(Consultant_Registeration.this, "Enter Full Name!", Toast.LENGTH_SHORT).show();
          return;
@@ -179,7 +182,8 @@ public class Consultant_Registeration extends AppCompatActivity {
         String timeStamp = "" + System.currentTimeMillis();
         //Saving Data Without Image
         if(Imageuri==null){
-            HashMap<String, Object> hashMap = new HashMap<>();
+            FirebaseHelper firebaseHelper=new FirebaseHelper(firebaseAuth.getUid(),consultantField,Name,Email,Phone_No,Password,CNIC_No,Degree,Specifitication,profileImage,accountType);
+         /*   HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("uid"," "+ firebaseAuth.getUid());
             hashMap.put("Field", "" + consultantField);
             hashMap.put("Name", "" + Name);
@@ -190,10 +194,10 @@ public class Consultant_Registeration extends AppCompatActivity {
             hashMap.put("Qualification", "" + Degree);
             hashMap.put("Specification",""+ Specifitication);
             hashMap.put("accountType", "Consultant");
-            hashMap.put("ProfileImage","");
+            hashMap.put("ProfileImage","");  */
             //Save Data in Database
             DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
-            reference.child(firebaseAuth.getUid()+"~Consultant~").setValue(hashMap)
+            reference.child(firebaseAuth.getUid()+"~Consultant~").setValue(firebaseHelper)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
@@ -227,7 +231,8 @@ public class Consultant_Registeration extends AppCompatActivity {
                             while (!uriTask.isSuccessful());
                             Uri downloadImageUri=uriTask.getResult();
                             if(uriTask.isSuccessful()){
-                                HashMap<String, Object> hashMap = new HashMap<>();
+                                FirebaseHelper firebaseHelper=new FirebaseHelper(firebaseAuth.getUid(),consultantField,Name,Email,Phone_No,Password,CNIC_No,Degree,Specifitication,profileImage,accountType);
+                          /*      HashMap<String, Object> hashMap = new HashMap<>();
                                 hashMap.put("uid"," "+ firebaseAuth.getUid());
                                 hashMap.put("Field", "" + consultantField);
                                 hashMap.put("Name", "" + Name);
@@ -238,10 +243,10 @@ public class Consultant_Registeration extends AppCompatActivity {
                                 hashMap.put("Qualification", "" + Degree);
                                 hashMap.put("Specification",""+ Specifitication);
                                 hashMap.put("accountType", "Consultant");
-                                hashMap.put("profileImage", "" + downloadImageUri); // URL Of Uploaded Image
+                                hashMap.put("profileImage", "" + downloadImageUri); // URL Of Uploaded Image  */
                                 //Save Data in Database
                                 DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
-                                reference.child(firebaseAuth.getUid()+"~Consultant~").setValue(hashMap)
+                                reference.child(firebaseAuth.getUid()+"~Consultant~").setValue(firebaseHelper)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

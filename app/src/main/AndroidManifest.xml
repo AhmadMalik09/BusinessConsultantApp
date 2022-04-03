@@ -10,7 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BusinessConsultant">
+        android:theme="@style/Theme.BusinessConsultant"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".loading_Consultants"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".forget_Pass"
             android:exported="true"
@@ -115,11 +120,11 @@
         <activity
             android:name=".Consultant_Dashboard"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View_profile"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

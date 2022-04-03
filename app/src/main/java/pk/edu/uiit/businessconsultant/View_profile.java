@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +16,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class View_profile extends AppCompatActivity {
     FirebaseAuth mAuth;
     TextView name,email,phone,education,specification,field;
-    ImageView profileImg;
+
     ImageButton backBtn;
+    CircleImageView ProfilePic;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_profile);
@@ -49,24 +52,26 @@ public class View_profile extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for(DataSnapshot ds: snapshot.getChildren()){
                             // Get Data From Database (Firebase)
-                            String Name = ""+ds.child("Name").getValue();
-                            String Expertee = ""+ds.child("Field").getValue();
-                            String profileImage = ""+ds.child("profileImage").getValue();
-                            String Education=""+ds.child("Qualification").getValue();
-                            String Specification=""+ds.child("Specification").getValue();
-                            String Phone=""+ds.child("Phone_No").getValue();
+                            String Name = ""+ds.child("name").getValue();
+                            String Email=""+ ds.child("email").getValue();
+                            String Expertee = ""+ds.child("field").getValue();
+                            String profileImage = ""+ds.child("imageURL").getValue();
+                            String Education=""+ds.child("qualification").getValue();
+                            String Specification=""+ds.child("specification").getValue();
+                            String Phone=""+ds.child("phone").getValue();
                             // Set Data To Main Seller Activity Views
                             name.setText(Name);
                             field.setText(Expertee);
                             education.setText(Education);
                             specification.setText(Specification);
                             phone.setText(Phone);
+                            email.setText(Email);
 
                             try {
-                              //   Picasso.get().load(profileImage).placeholder(R.drawable.profile).into(profileImg);
+                                  Picasso.get().load(profileImage).placeholder(R.drawable.profile).into( ProfilePic);
                             }
                             catch (Exception exception){
-                                // profilePic.setImageResource(R.drawable.ic_store_gray);
+                                ProfilePic.setImageResource(R.drawable.profile);
                             }
                         }
                     }
@@ -94,7 +99,7 @@ public class View_profile extends AppCompatActivity {
     field=(TextView) findViewById(R.id.Field);
     education=(TextView) findViewById(R.id.education);
     specification=(TextView) findViewById(R.id.certificate);
-    profileImg=(ImageView)findViewById(R.id.profile);
+    ProfilePic =(CircleImageView)findViewById(R.id.consultantProfile);
     mAuth=FirebaseAuth.getInstance();
     backBtn=(ImageButton) findViewById(R.id.backBtn);
     }
