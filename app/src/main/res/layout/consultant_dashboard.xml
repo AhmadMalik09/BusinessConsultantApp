@@ -95,7 +95,12 @@
                 android:id="@+id/ratingBar"
                 android:numStars="5"
                 android:stepSize="0.5"
-                android:layout_below="@id/expertise">
+                android:layout_below="@id/expertise"
+               android:scaleX=".8"
+               android:scaleY=".8"
+               android:transformPivotX="0dp"
+               android:transformPivotY="0dp"
+               android:isIndicator="true">
 
            </RatingBar>
 
@@ -174,24 +179,27 @@
             android:layout_height="wrap_content"
             android:background="@drawable/consultant_square"
             android:drawableTop="@drawable/qualification"
-            android:padding="20dp"
+            android:paddingTop="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="20dp"
             android:layout_marginLeft="20dp"
-            android:text="Qualification"
+            android:text="Add Data"
             android:textColor="@color/black" />
 
         <Button
             android:id="@+id/consult_ratings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/consultant_square"
             android:drawableTop="@drawable/ratings"
-            android:paddingLeft="41dp"
-            android:paddingRight="41dp"
+            android:paddingLeft="43dp"
+            android:paddingRight="43dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:text="Ratings"
+            android:text="Reviews"
             android:textColor="@color/black" />
 
 

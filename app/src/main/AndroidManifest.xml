@@ -13,22 +13,30 @@
         android:theme="@style/Theme.BusinessConsultant"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".loading_Consultants"
+            android:name=".ModelClasses.loading_users"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".Activites.Chat"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".forget_Pass"
+            android:name=".ModelClasses.loading_Consultants"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activites.forget_Pass"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Facebook_Login"
+            android:name=".Activites.Facebook_Login"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activites.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".splash"
+            android:name=".Activites.splash"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -38,91 +46,67 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login"
+            android:name=".Activites.login"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".register"
+            android:name=".Activites.register"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".user_dashboard"
+            android:name=".Activites.user_dashboard"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".real_estate"
+            android:name=".Activites.real_estate_consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Agriculture"
+            android:name=".Activites.crypto_consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ECommerce"
+            android:name=".Activites.ecommerce_consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Enterpreneur"
+            android:name=".Activites.agriculture_consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Farming"
+            android:name=".Activites.farming_consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".IT"
+            android:name=".Activites.stock_market_consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".real_estate_consultancy"
+            android:name=".Activites.IT_Consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".crypto_consultancy"
+            android:name=".Activites.Enterpreneue_Ship"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ecommerce_consultancy"
+            android:name=".Activites.Consultant_Registeration"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".agriculture_consultancy"
+            android:name=".Activites.Consultant_degree_verify"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".farming_consultancy"
+            android:name=".Activites.Consultant_CNIC_Verify"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".stock_market_consultancy"
+            android:name=".Activites.Consultant_Dashboard"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".IT_Consultancy"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Enterpreneue_Ship"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Consultant_Registeration"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Consultant_degree_verify"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Consultant_CNIC_Verify"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Consultant_Dashboard"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".View_profile"
+            android:name=".Activites.View_profile"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
 

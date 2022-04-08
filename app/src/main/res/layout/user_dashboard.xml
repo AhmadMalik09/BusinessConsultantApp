@@ -10,19 +10,18 @@
         android:text="Name"
         android:textSize="25sp"
         android:textColor="@color/black"
-        android:padding="10dp"
-
-        ></TextView>
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="180dp">
+    </TextView>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/logoutBtn"
         android:layout_toRightOf="@id/useName"
         android:src="@drawable/logoutimg"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="10dp"
-
-      ></ImageView>
+        android:layout_marginTop="10dp">
+    </ImageView>
 
     <ImageView
         android:id="@+id/business_image"
