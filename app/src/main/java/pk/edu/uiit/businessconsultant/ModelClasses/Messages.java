@@ -1,4 +1,4 @@
-package pk.edu.uiit.businessconsultant.Activites;
+package pk.edu.uiit.businessconsultant.ModelClasses;
 
 public class Messages {
     String message;

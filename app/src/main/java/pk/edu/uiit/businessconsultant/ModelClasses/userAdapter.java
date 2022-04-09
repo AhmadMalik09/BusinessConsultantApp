@@ -1,4 +1,4 @@
-package pk.edu.uiit.businessconsultant;
+package pk.edu.uiit.businessconsultant.ModelClasses;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +16,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.Activites.Chat;
-import pk.edu.uiit.businessconsultant.Activites.FirebaseHelper;
-import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
+import pk.edu.uiit.businessconsultant.R;
 
 public class userAdapter extends RecyclerView.Adapter<userAdapter.viewholder>{
     Context loading_consultants;

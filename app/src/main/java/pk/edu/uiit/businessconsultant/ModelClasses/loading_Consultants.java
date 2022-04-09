@@ -19,8 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import pk.edu.uiit.businessconsultant.userAdapter;
-import pk.edu.uiit.businessconsultant.Activites.FirebaseHelper;
 import pk.edu.uiit.businessconsultant.R;
 import pk.edu.uiit.businessconsultant.Activites.agriculture_consultancy;
 import pk.edu.uiit.businessconsultant.Activites.login;

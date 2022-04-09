@@ -24,7 +24,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -32,6 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import pk.edu.uiit.businessconsultant.ModelClasses.FirebaseHelper;
 import pk.edu.uiit.businessconsultant.R;
 
 public class Consultant_Registeration extends AppCompatActivity {
@@ -61,15 +61,6 @@ public class Consultant_Registeration extends AppCompatActivity {
         setContentView(R.layout.consultant_registeration);
         initialize();
         perform_action();
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user!= null){
-            Intent intent=new Intent(Consultant_Registeration.this,Consultant_Dashboard.class);
-           startActivity(intent);
-        }
     }
     private void perform_action(){
         Choices=getResources().getStringArray(R.array.Field_Selection);
@@ -109,17 +100,7 @@ public class Consultant_Registeration extends AppCompatActivity {
     }
  //Save Consultant Registration data to Firebase
  private void inputData() {
-        consultantField= spinner.getSelectedItem().toString().trim();
-        Name = name.getText().toString().trim();
-        Email = email.getText().toString().trim();
-        Password= password.getText().toString().trim();
-        Phone_No= Phone.getText().toString().trim();
-        CNIC_No=CNIC.getText().toString().trim();
-        Degree= Qualification.getText().toString().trim();
-        Specifitication = specification.getText().toString().trim();
-        accountType="Consultant";
-        profileImage=Imageuri.toString();
-
+        //Setting Validations on Data
      if (TextUtils.isEmpty(Name)) {
          Toast.makeText(Consultant_Registeration.this, "Enter Full Name!", Toast.LENGTH_SHORT).show();
          return;
@@ -151,6 +132,18 @@ public class Consultant_Registeration extends AppCompatActivity {
          Toast.makeText(Consultant_Registeration.this, "Enter Your Certification!", Toast.LENGTH_SHORT).show();
          return;
      }
+        consultantField= spinner.getSelectedItem().toString().trim();
+        Name = name.getText().toString().trim();
+        Email = email.getText().toString().trim();
+        Password= password.getText().toString().trim();
+        Phone_No= Phone.getText().toString().trim();
+        CNIC_No=CNIC.getText().toString().trim();
+        Degree= Qualification.getText().toString().trim();
+        Specifitication = specification.getText().toString().trim();
+        accountType="Consultant";
+        profileImage=Imageuri.toString();
+
+
 
      createAccount();
 

@@ -29,6 +29,7 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.Adapters.messagesAdapter;
+import pk.edu.uiit.businessconsultant.ModelClasses.Messages;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_users;
 import pk.edu.uiit.businessconsultant.R;
 

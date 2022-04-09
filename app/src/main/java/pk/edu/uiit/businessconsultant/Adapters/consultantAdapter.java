@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.Activites.Chat;
-import pk.edu.uiit.businessconsultant.Activites.FirebaseHelper;
+import pk.edu.uiit.businessconsultant.ModelClasses.FirebaseHelper;
 import pk.edu.uiit.businessconsultant.ModelClasses.Users;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_users;
 import pk.edu.uiit.businessconsultant.R;

@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import pk.edu.uiit.businessconsultant.Activites.Messages;
+import pk.edu.uiit.businessconsultant.ModelClasses.Messages;
 import pk.edu.uiit.businessconsultant.R;
 
 public class messagesAdapter extends RecyclerView.Adapter {

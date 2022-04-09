@@ -3,6 +3,7 @@ package pk.edu.uiit.businessconsultant.Activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ import pk.edu.uiit.businessconsultant.R;
 public class View_profile extends AppCompatActivity {
     FirebaseAuth mAuth;
     TextView name,email,phone,education,specification,field;
-
+    Button updateinfo;
     ImageButton backBtn;
     CircleImageView ProfilePic;
     protected void onCreate(Bundle savedInstanceState){
@@ -92,6 +93,16 @@ public class View_profile extends AppCompatActivity {
 
             }
         });
+        //update Info Button
+        updateinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(View_profile.this,update_profile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     public void initialize(){
     name=(TextView) findViewById(R.id.name);
@@ -103,6 +114,7 @@ public class View_profile extends AppCompatActivity {
     ProfilePic =(CircleImageView)findViewById(R.id.consultantProfile);
     mAuth=FirebaseAuth.getInstance();
     backBtn=(ImageButton) findViewById(R.id.backBtn);
+    updateinfo=(Button) findViewById(R.id.updateInfo);
     }
 
 }

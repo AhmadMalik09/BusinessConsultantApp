@@ -8,20 +8,22 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="415dp"
+        android:layout_height="400dp"
         android:background="#00ADC1">
+
         <LinearLayout
-            android:background="@drawable/view_profile"
             android:layout_width="match_parent"
             android:layout_height="350dp"
+            android:background="@drawable/view_profile"
             android:orientation="vertical">
+
             <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
+                android:background="?attr/selectableItemBackground"
                 android:src="@drawable/icon_back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -30,27 +32,38 @@
                 android:id="@+id/consultantProfile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
                 android:src="@drawable/profile"
                 app:civ_border_color="#00ADC1"
-                android:layout_gravity="center"
-                android:layout_marginTop="45dp"
                 app:civ_border_width="2dp" />
-            <TextView
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="-60dp"
+                android:layout_marginRight="110dp"
+                android:clickable="true"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
+
+            <EditText
                 android:id="@+id/name"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:text="ConsultantName"
                 android:textColor="#fff"
-                android:textStyle="bold"
-                android:textSize="21sp"/>
+                android:textSize="21sp"
+                android:textStyle="bold" />
         </LinearLayout>
         <androidx.cardview.widget.CardView
             android:layout_width="400dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="285dp"
+            android:layout_marginTop="275dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
             <LinearLayout
@@ -136,82 +149,82 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_baseline_email_24" />
+        <TextView
+            android:id="@+id/email"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_baseline_email_24" />
-            <TextView
-                android:id="@+id/email"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="ahmad@gmail.com"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_baseline_local_phone_24"/>
-            <TextView
-                android:id="@+id/phone"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="+92302 11122233"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_baseline_perm_identity_24"/>
-            <TextView
-                android:id="@+id/Field"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="Field"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_baseline_cast_for_education_24"/>
-            <TextView
-                android:id="@+id/education"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="Gradution"/>
-        </LinearLayout>
+            android:paddingLeft="20dp"
+            android:text="ahmad@gmail.com"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_baseline_local_phone_24"/>
+        <EditText
+            android:id="@+id/phone"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="+92302 11122233"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_baseline_perm_identity_24"/>
+        <TextView
+            android:id="@+id/Field"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Field"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_baseline_cast_for_education_24"/>
+        <EditText
+            android:id="@+id/education"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:text="Gradution"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
@@ -222,7 +235,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_baseline_text_fields_24"/>
-        <TextView
+        <EditText
             android:id="@+id/certificate"
             android:textStyle="bold"
             android:layout_gravity="center_vertical"
@@ -232,7 +245,7 @@
             android:text="CS"/>
     </LinearLayout>
     <Button
-        android:id="@+id/updateInfo"
+        android:id="@+id/updateProfile"
         android:layout_marginTop="20dp"
         android:layout_width="240dp"
         android:layout_height="40dp"
@@ -245,4 +258,4 @@
 
     </Button>
 
-    </LinearLayout>
+</LinearLayout>

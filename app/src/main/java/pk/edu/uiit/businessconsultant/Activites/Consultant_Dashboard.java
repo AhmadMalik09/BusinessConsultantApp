@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import pk.edu.uiit.businessconsultant.ModelClasses.FirebaseHelper;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_users;
 import pk.edu.uiit.businessconsultant.R;
 
@@ -77,7 +78,8 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
                                    Picasso.get().load(profileImage).fit().centerCrop().placeholder(R.drawable.profile).into(profilePicture);
                             }
                             catch (Exception exception){
-                                    profilePicture.setImageResource(R.drawable.profile);
+                                   // profilePicture.setImageResource(R.drawable.profile);
+                                Toast.makeText(Consultant_Dashboard.this, ""+exception.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }

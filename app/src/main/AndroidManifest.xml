@@ -13,9 +13,16 @@
         android:theme="@style/Theme.BusinessConsultant"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ModelClasses.loading_users"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".Activites.ECommerce"
             android:exported="false" />
+        <activity
+            android:name=".Activites.update_profile"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ModelClasses.loading_users"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activites.Chat"
             android:exported="false"

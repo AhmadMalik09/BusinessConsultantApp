@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 import pk.edu.uiit.businessconsultant.Adapters.consultantAdapter;
 import pk.edu.uiit.businessconsultant.Activites.Consultant_Dashboard;
-import pk.edu.uiit.businessconsultant.Activites.Messages;
 import pk.edu.uiit.businessconsultant.R;
 import pk.edu.uiit.businessconsultant.Activites.login;
 

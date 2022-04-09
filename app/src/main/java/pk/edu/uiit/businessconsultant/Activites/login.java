@@ -41,7 +41,8 @@ public class login extends AppCompatActivity {
         forgetPassword();
     }
 
-private void perform_action(){
+
+    private void perform_action(){
     btnlogin.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -78,43 +79,44 @@ private void perform_action(){
 
         }
 
+    });
+}
 
-        private void checkUserType() {
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-            reference.orderByChild("uid").equalTo(mAuth.getUid())
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                           for (DataSnapshot ds: snapshot.getChildren()){
-                                String accountType = ""+ds.child("accountType").getValue();
-                                if (accountType.equals("Consultant"))
-                                {
-                                    progressDialog.dismiss();
-                                    // User Is Consultant
-                                    startActivity(new Intent(login.this, Consultant_Dashboard.class));
-                                    finish();
-                                }
-                                if (accountType.equals("User"))
-                                {
-                                    progressDialog.dismiss();
-                                    // User
-                                    startActivity(new Intent(login.this, user_dashboard.class));
-                                    finish();
-                                }
 
+    private void checkUserType() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.orderByChild("uid").equalTo(mAuth.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            String accountType = ""+ds.child("accountType").getValue();
+                            if (accountType.equals("Consultant"))
+                            {
+                                progressDialog.dismiss();
+                                // User Is Consultant
+                                startActivity(new Intent(login.this, Consultant_Dashboard.class));
+                                finish();
+                            }
+                            if (accountType.equals("User"))
+                            {
+                                progressDialog.dismiss();
+                                // User
+                                startActivity(new Intent(login.this, user_dashboard.class));
+                                finish();
                             }
 
                         }
 
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(login.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
-    });
-}
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(login.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 private void register_now(){
         register.setOnClickListener(new View.OnClickListener() {
             @Override

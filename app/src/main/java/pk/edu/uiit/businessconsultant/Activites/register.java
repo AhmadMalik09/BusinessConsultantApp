@@ -72,17 +72,6 @@ public class register extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if(user!= null){
-           Intent intent=new Intent(register.this,user_dashboard.class);
-            startActivity(intent);
-        }
-    }
-
-
     // Google SignIn Started From Here
     private void googleSiginRequest() {
         // Configure Google Sign In
@@ -183,14 +172,6 @@ public class register extends AppCompatActivity {
 
 //Firebase authentication with Email and Password started from here
             private void inputData() {
-                // Get Data From Views
-                fullName = etName.getText().toString().trim();
-                phoneNumber = etPhone.getText().toString().trim();
-                email = etEmail.getText().toString().trim();
-                password = etPass.getText().toString().trim();
-                profileImage=Imageuri.toString();
-                accountType="User";
-                // Set Validations of Data
                 if (TextUtils.isEmpty(fullName)) {
                     Toast.makeText(register.this, "Enter Full Name!", Toast.LENGTH_SHORT).show();
                     return;
@@ -210,6 +191,15 @@ public class register extends AppCompatActivity {
                     Toast.makeText(register.this, "Password Must be atleast 6 characters long!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // Get Data From Views
+                fullName = etName.getText().toString().trim();
+                phoneNumber = etPhone.getText().toString().trim();
+                email = etEmail.getText().toString().trim();
+                password = etPass.getText().toString().trim();
+                profileImage=Imageuri.toString();
+                accountType="User";
+                // Set Validations of Data
+
 
                 createAccount();
             }

@@ -1,7 +1,17 @@
-package pk.edu.uiit.businessconsultant.Activites;
+package pk.edu.uiit.businessconsultant.ModelClasses;
 
 public class FirebaseHelper {
-    String name,email,uid,profileImage,Field,Password,Phone,CNIC,Qualification,Specification,accountType;
+    String name;
+    String email;
+    String uid;
+    String profileImage;
+    String Field;
+    String Password;
+    String Phone;
+    String CNIC;
+    String Qualification;
+    String Specification;
+    String accountType;
     public FirebaseHelper() {
 
     }
