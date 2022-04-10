@@ -174,7 +174,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/consult_edu"
+            android:id="@+id/add_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/consultant_square"

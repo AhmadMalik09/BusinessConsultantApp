@@ -2,60 +2,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#150B64">
-    <ImageView
-        android:id="@+id/logoImage"
+    >
+  <ImageView
+    android:id="@+id/appLogo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/app_logo"
+      android:layout_centerInParent="true">
+
+  </ImageView>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appLogo"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+
+        android:progress="20"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp">
+    </ProgressBar>
+    <TextView
+        android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo1"
-       android:layout_centerHorizontal="true"
-        android:layout_marginTop="225dp"
-        >
-
-    </ImageView>
-
-    <TextView
-        android:id="@+id/l1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logoImage"
-        android:layout_centerInParent="true"
-        android:paddingStart="115sp"
-        android:text="Business"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="45dp"
-        android:textStyle="bold">
+        android:text="0"
+        android:textColor="@color/app_background"
+        android:textSize="25dp"
+        android:layout_toRightOf="@id/progressBar"
+        android:layout_below="@id/appLogo"
+        android:layout_marginTop="21dp"
+        android:layout_marginLeft="20dp">
 
     </TextView>
-    <TextView
-        android:id="@+id/l2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/l1"
-        android:text="Consultant"
-        android:textColor="@color/white"
-        android:textSize="45dp"
-        android:textStyle="bold"
 
-        android:paddingStart="95sp"
-        >
-
-    </TextView>
-    <TextView
-        android:id="@+id/slogan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/l2"
-        android:text="estd 2021"
-        android:textColor="#5271FF"
-        android:textSize="20dp"
-        android:textStyle="bold"
-
-        android:paddingStart="145sp"
-        >
-
-    </TextView>
 
 
 

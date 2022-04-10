@@ -23,7 +23,9 @@
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/textview_background.xml" value="0.10555555555555556" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/view_profile.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/font/font.xml" value="0.1" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/activity_add_data.xml" value="0.15896739130434784" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/activity_chat.xml" value="0.16" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/activity_ecommerce.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/activity_forget_pass.xml" value="0.33" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/activity_loading_consultants.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/activity_loading_users.xml" value="0.1453804347826087" />
@@ -40,6 +42,7 @@
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/consultant_registeration_part2.xml" value="0.12731481481481483" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/contacts_design.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/crpyto_consultancny.xml" value="0.17844202898550723" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/data_adapter.xml" value="0.15896739130434784" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/e_commerce.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/e_commerce_consultancy.xml" value="0.12731481481481483" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/entrepreneurship.xml" value="0.12731481481481483" />

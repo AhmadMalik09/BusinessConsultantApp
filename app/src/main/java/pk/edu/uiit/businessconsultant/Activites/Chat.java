@@ -1,6 +1,5 @@
 package pk.edu.uiit.businessconsultant.Activites;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -30,7 +29,6 @@ import java.util.Date;
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.Adapters.messagesAdapter;
 import pk.edu.uiit.businessconsultant.ModelClasses.Messages;
-import pk.edu.uiit.businessconsultant.ModelClasses.loading_users;
 import pk.edu.uiit.businessconsultant.R;
 
 public class Chat extends AppCompatActivity {
@@ -158,8 +156,7 @@ public class Chat extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Chat.this, loading_users.class);
-                startActivity(intent);
+                onBackPressed();
                 finish();
 
             }

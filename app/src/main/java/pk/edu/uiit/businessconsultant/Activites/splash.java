@@ -1,12 +1,10 @@
 package pk.edu.uiit.businessconsultant.Activites;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,27 +19,96 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import pk.edu.uiit.businessconsultant.R;
 
 public class splash extends AppCompatActivity {
-    Animation top_animation , bottom_animation;
-    ImageView image;
-    TextView logo1,logo2,slogan;
+  //  Animation top_animation , bottom_animation;
+  //  ImageView image;
+    TextView progress;
+    ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
+    int progressValue=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash);
-        intialize();
+        //intialize();
+        progress=(TextView)findViewById(R.id.progress);
+        progressBar=(ProgressBar)findViewById(R.id.progressBar);
+        firebaseAuth=FirebaseAuth.getInstance();
+        Activity activity=splash.this;
+        progressBar.setProgress(progressValue);
+        progressBar.setMax(100);
+
+       Timer timer=new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                progressValue = progressValue+1;
+                progressBar.setProgress(progressValue);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progress.setText(String.valueOf(progressValue+"%"));
+                    }
+                });
+                if(progressBar.getProgress()>=100){
+                    timer.cancel();
+                    FirebaseUser user=firebaseAuth.getInstance().getCurrentUser();
+                    if(user==null){
+                        startActivity(new Intent(splash.this,login.class));
+                        finish();
+                    }
+                    if(user!=null){
+                        //It will check usertype then allow user to move their respected dashboard
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                        reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot ds: snapshot.getChildren()){
+                                            String accountType = ""+ds.child("accountType").getValue();
+                                            if (accountType.equals("Consultant"))
+                                            {
+
+                                                // User Is Consultant
+                                                startActivity(new Intent(splash.this, Consultant_Dashboard.class));
+                                                finish();
+                                            }
+                                            if (accountType.equals("User"))
+                                            {
+
+                                                // User
+                                                startActivity(new Intent(splash.this, user_dashboard.class));
+                                                finish();
+                                            }
+
+                                        }
+
+                                    }
 
 
-        Handler handler = new Handler();
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(splash.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                }
+
+            }
+        },1000,50);
+
+   /*     Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                /* Intent intent = new Intent(splash.this,login.class);
                 startActivity(intent);
-                finish(); */
+                finish();
                 FirebaseUser user=firebaseAuth.getInstance().getCurrentUser();
                 if(user==null){
                     startActivity(new Intent(splash.this,login.class));
@@ -85,22 +152,20 @@ public class splash extends AppCompatActivity {
 
             }
 
-        },3000);
+        },3000);  */
+
 
     }
 
 
     private void intialize(){
-        top_animation= AnimationUtils.loadAnimation(this,R.anim.splash_animation);
-        bottom_animation=AnimationUtils.loadAnimation(this,R.anim.splash_bottom);
-        image=(ImageView) findViewById(R.id.logoImage);
-        logo1=(TextView) findViewById(R.id.l1);
-        logo2=(TextView) findViewById(R.id.l2);
-        slogan=(TextView) findViewById(R.id.slogan);
-        image.setAnimation(top_animation);
-        logo1.setAnimation(bottom_animation);
-        logo2.setAnimation(bottom_animation);
-        slogan.setAnimation(bottom_animation);
+   //     top_animation= AnimationUtils.loadAnimation(this,R.anim.splash_animation);
+   //     bottom_animation=AnimationUtils.loadAnimation(this,R.anim.splash_bottom);
+        //    image.setAnimation(top_animation);
+        progress=(TextView)findViewById(R.id.progress);
+        progressBar=(ProgressBar)findViewById(R.id.progressBar);
+
+
         firebaseAuth=FirebaseAuth.getInstance();
     }
 

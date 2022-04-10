@@ -1,16 +1,20 @@
 package pk.edu.uiit.businessconsultant.Activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
 public class stock_market_consultancy extends AppCompatActivity {
     TextView stock_market,stock_platforms,stock_profit,trading,Technical_terms;
     TextView  stock_market_ans,stock_platforms_ans,stock_profit_ans,trading_ans,Technical_terms_ans;
+    Button goForChat;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stock_market_consultancy);
@@ -73,6 +77,13 @@ public class stock_market_consultancy extends AppCompatActivity {
                 Technical_terms_ans.setVisibility(View.VISIBLE);
             }
         });
+        goForChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(stock_market_consultancy.this, loading_Consultants.class);
+                startActivity(intent);
+            }
+        });
     }
     public void initialize(){
         stock_market=(TextView) findViewById(R.id.about_s_market);
@@ -85,5 +96,6 @@ public class stock_market_consultancy extends AppCompatActivity {
         stock_profit_ans=(TextView) findViewById(R.id.stock_profit_loss_answer);
         trading_ans=(TextView) findViewById(R.id.stock_trading_ans);
         Technical_terms_ans=(TextView) findViewById(R.id.Technical_terms_dtl);
+        goForChat=(Button) findViewById(R.id.stock_consultant);
     }
 }

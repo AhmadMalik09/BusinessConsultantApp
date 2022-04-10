@@ -88,7 +88,7 @@ public class user_dashboard extends AppCompatActivity {
         e_commerce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(user_dashboard.this,ecommerce_consultancy.class);
+                Intent intent=new Intent(user_dashboard.this,ECommerce.class);
                 user_dashboard.this.startActivity(intent);
             }
         });

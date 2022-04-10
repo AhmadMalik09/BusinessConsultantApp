@@ -36,7 +36,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
     TextView Consultant_Name,Expertise;
     FirebaseAuth mAuth;
     ImageButton logout;
-    Button view_profile,Chat_Box;
+    Button view_profile,Chat_Box,Add_Data;
     RatingBar ratingBar;
    FirebaseHelper users;
    CircleImageView profilePicture;
@@ -99,6 +99,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
     users=new FirebaseHelper();
     profilePicture=(CircleImageView) findViewById(R.id.profilePic);
     Chat_Box=(Button) findViewById(R.id.chat_box);
+    Add_Data=(Button) findViewById(R.id.add_data);
     }
 
     public void performAction(){
@@ -142,6 +143,13 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
             public void onClick(View v) {
                Intent intent=new Intent(Consultant_Dashboard.this, loading_users.class);
                startActivity(intent);
+            }
+        });
+        Add_Data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Consultant_Dashboard.this, Add_Data.class);
+                startActivity(intent);
             }
         });
     }

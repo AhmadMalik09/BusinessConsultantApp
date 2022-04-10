@@ -1,16 +1,20 @@
 package pk.edu.uiit.businessconsultant.Activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
 public class farming_consultancy extends AppCompatActivity {
     TextView farming,equipment,profit,methodology;
     TextView farming_ans,equipment_dtl,profit_ans,methodology_ans;
+    Button goForChat;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farming_consultancy);
@@ -58,6 +62,13 @@ public class farming_consultancy extends AppCompatActivity {
                 methodology_ans.setVisibility(View.VISIBLE);
             }
         });
+        goForChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(farming_consultancy.this, loading_Consultants.class);
+                startActivity(intent);
+            }
+        });
     }
     public void initialize(){
         farming=(TextView) findViewById(R.id.about_farming);
@@ -68,6 +79,7 @@ public class farming_consultancy extends AppCompatActivity {
         equipment_dtl=(TextView) findViewById(R.id.equipment_answer);
         profit_ans=(TextView) findViewById(R.id.farming_profit_ans);
         methodology_ans=(TextView) findViewById(R.id.farming_methodology_ans);
+        goForChat=(Button) findViewById(R.id.farming_consultant);
     }
 
 }

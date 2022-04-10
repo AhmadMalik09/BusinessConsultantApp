@@ -101,6 +101,16 @@ public class Consultant_Registeration extends AppCompatActivity {
  //Save Consultant Registration data to Firebase
  private void inputData() {
         //Setting Validations on Data
+        consultantField= spinner.getSelectedItem().toString().trim();
+        Name = name.getText().toString().trim();
+        Email = email.getText().toString().trim();
+        Password= password.getText().toString().trim();
+        Phone_No= Phone.getText().toString().trim();
+        CNIC_No=CNIC.getText().toString().trim();
+        Degree= Qualification.getText().toString().trim();
+        Specifitication = specification.getText().toString().trim();
+        accountType="Consultant";
+        profileImage=Imageuri.toString();
      if (TextUtils.isEmpty(Name)) {
          Toast.makeText(Consultant_Registeration.this, "Enter Full Name!", Toast.LENGTH_SHORT).show();
          return;
@@ -132,17 +142,6 @@ public class Consultant_Registeration extends AppCompatActivity {
          Toast.makeText(Consultant_Registeration.this, "Enter Your Certification!", Toast.LENGTH_SHORT).show();
          return;
      }
-        consultantField= spinner.getSelectedItem().toString().trim();
-        Name = name.getText().toString().trim();
-        Email = email.getText().toString().trim();
-        Password= password.getText().toString().trim();
-        Phone_No= Phone.getText().toString().trim();
-        CNIC_No=CNIC.getText().toString().trim();
-        Degree= Qualification.getText().toString().trim();
-        Specifitication = specification.getText().toString().trim();
-        accountType="Consultant";
-        profileImage=Imageuri.toString();
-
 
 
      createAccount();

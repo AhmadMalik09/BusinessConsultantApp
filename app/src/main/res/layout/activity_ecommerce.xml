@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.ECommerce">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#00ADC1">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-100dp"
+        android:src="@drawable/ecommerce_img">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </ImageView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/personalDetailsCard"
+            style="@style/centreLocatorCardDesign"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="100dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:focusableInTouchMode="false"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/QA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="12"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp">
+
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="2dp"
+                        android:background="#00ADC1"
+                        android:layout_weight="3"/>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="For More Info "
+                        android:layout_weight="6"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"/>
+
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="2dp"
+                        android:background="#00ADC1"
+                        android:layout_weight="3"/>
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/real_estate_consultant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/login_button_design"
+                    android:text="Chat with Consultant"
+
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </ScrollView>
+
+</RelativeLayout>

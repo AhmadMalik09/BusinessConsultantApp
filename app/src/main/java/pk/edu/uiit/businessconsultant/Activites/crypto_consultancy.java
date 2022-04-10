@@ -1,16 +1,20 @@
 package pk.edu.uiit.businessconsultant.Activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
 public class crypto_consultancy extends AppCompatActivity {
     TextView crypto,platforms,profit_loss,signals,Technical_terms;
     TextView  crypto_ans,platforms_ans,profit_loss_ans,signals_ans,Technical_terms_ans;
+    Button goForChat;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crpyto_consultancny);
@@ -73,6 +77,13 @@ public class crypto_consultancy extends AppCompatActivity {
                 Technical_terms_ans.setVisibility(View.VISIBLE);
             }
         });
+        goForChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(crypto_consultancy.this, loading_Consultants.class);
+                startActivity(intent);
+            }
+        });
     }
     public void initialize(){
         crypto=(TextView) findViewById(R.id.about_crypto);
@@ -85,6 +96,7 @@ public class crypto_consultancy extends AppCompatActivity {
         profit_loss_ans=(TextView) findViewById(R.id.crypto_profit_loss_answer);
         signals_ans=(TextView) findViewById(R.id.crypto_signals_ans);
         Technical_terms_ans=(TextView) findViewById(R.id.Technical_terms_ans);
+        goForChat=(Button) findViewById(R.id.crypto_consultant);
     }
 
 }

@@ -13,8 +13,13 @@
         android:theme="@style/Theme.BusinessConsultant"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activites.Add_Data"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name=".Activites.ECommerce"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Activites.update_profile"
             android:exported="false"

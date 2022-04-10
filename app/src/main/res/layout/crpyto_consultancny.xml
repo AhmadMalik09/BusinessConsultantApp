@@ -198,7 +198,7 @@
 
                 </LinearLayout>
                 <Button
-                    android:id="@+id/real_estate_consultant"
+                    android:id="@+id/crypto_consultant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
