@@ -172,7 +172,7 @@ public class Consultant_Registeration extends AppCompatActivity {
 
     private void saverFirebaseData() {
         progressDialog.setTitle("Saving Account Information...");
-        String timeStamp = "" + System.currentTimeMillis();
+    //    String timeStamp = "" + System.currentTimeMillis();
         //Saving Data Without Image
         if(Imageuri==null){
             FirebaseHelper firebaseHelper=new FirebaseHelper(firebaseAuth.getUid(),consultantField,Name,Email,Phone_No,Password,CNIC_No,Degree,Specifitication,profileImage,accountType);

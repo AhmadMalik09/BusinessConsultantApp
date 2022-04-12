@@ -83,53 +83,5 @@
         android:autoLink="all"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="12"
-        android:gravity="center"
-        android:layout_marginTop="30dp">
-
-        <View
-            android:layout_width="50dp"
-            android:layout_height="2dp"
-            android:background="#00ADC1"
-            android:layout_weight="3"/>
-
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Use other Methods"
-            android:layout_weight="6"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:textAlignment="center"/>
-
-        <View
-            android:layout_width="50dp"
-            android:layout_height="2dp"
-            android:background="#00ADC1"
-            android:layout_weight="3"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_facebook"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_google_plus"
-            android:layout_marginLeft="10dp"/>
-    </LinearLayout>
-
-
 
 </LinearLayout>

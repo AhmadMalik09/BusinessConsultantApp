@@ -113,16 +113,17 @@
         android:layout_gravity="right"
         android:background="@drawable/login_button_design"
         />
+
     <TextView
-        style="@style/parent"
         android:id="@+id/consultant_registeration"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:text="Get Register For Consultant"
+        style="@style/parent"
         android:layout_marginTop="25dp"
+        android:autoLink="all"
         android:onClick="onLoginClick"
-        android:autoLink="all"/>
+        android:text="Get Register For Consultant"
+        android:textAlignment="center"
+        android:textColor="@color/app_background"
+        android:textSize="15sp" />
 
     <TextView
         style="@style/parent"

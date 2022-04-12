@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -174,25 +173,29 @@ public class register extends AppCompatActivity {
             private void inputData() {
 
                 // Get Data From Views
-                fullName = etName.getText().toString().trim();
-                phoneNumber = etPhone.getText().toString().trim();
-                email = etEmail.getText().toString().trim();
-                password = etPass.getText().toString().trim();
+                fullName = etName.getText().toString();
+                phoneNumber = etPhone.getText().toString();
+                email = etEmail.getText().toString();
+                password = etPass.getText().toString();
                 accountType="User";
                 profileImage=Imageuri.toString();
 
                 // Set Validations of Data
 
-                if (TextUtils.isEmpty(fullName)) {
+                if (fullName.isEmpty()) {
                     Toast.makeText(register.this, "Enter Full Name!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.isEmpty(phoneNumber)) {
+                if (phoneNumber.isEmpty()) {
                     Toast.makeText(register.this, "Enter Phone Number!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(phoneNumber.length()!=11){
                     Toast.makeText(this, "Phone should be 11 digit", Toast.LENGTH_SHORT).show();
+                }
+                if(email.isEmpty()){
+                    Toast.makeText(register.this, "Enter Your Email!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(register.this, "Please Enter Valid Email!", Toast.LENGTH_SHORT).show();

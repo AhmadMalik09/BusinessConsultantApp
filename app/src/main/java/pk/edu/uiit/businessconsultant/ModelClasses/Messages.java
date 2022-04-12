@@ -2,8 +2,8 @@ package pk.edu.uiit.businessconsultant.ModelClasses;
 
 public class Messages {
     String message;
-    public  static String senderID;
-    String receiverID;
+    String senderID;
+
     long timeStamp;
 
     public Messages() {
@@ -13,11 +13,11 @@ public class Messages {
         return message;
     }
 
-    public Messages(String message, String senderID, String receiverID, long timeStamp) {
+    public Messages(String message, String senderID,long timeStamp) {
         this.message = message;
         this.senderID = senderID;
         this.timeStamp = timeStamp;
-        this.receiverID=receiverID;
+
     }
 
     public void setMessage(String message) {
@@ -40,11 +40,5 @@ public class Messages {
         this.timeStamp = timeStamp;
     }
 
-    public String getReceiverID() {
-        return receiverID;
-    }
 
-    public void setReceiverID(String receiverID) {
-        this.receiverID = receiverID;
-    }
 }

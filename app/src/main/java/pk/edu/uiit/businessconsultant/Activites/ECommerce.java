@@ -48,6 +48,7 @@ public class ECommerce extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                infoArrayList.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
                         BusinessInfo info=dataSnapshot.getValue(BusinessInfo.class);
                         infoArrayList.add(info);
@@ -62,8 +63,11 @@ public class ECommerce extends AppCompatActivity {
             }
         });
         recyclerView=(RecyclerView) findViewById(R.id.QA);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
         adapter=new dataAdapter(ECommerce.this,infoArrayList);
         recyclerView.setAdapter(adapter);
+
     }
 }

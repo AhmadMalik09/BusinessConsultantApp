@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -31,7 +30,6 @@ import pk.edu.uiit.businessconsultant.R;
 
 public class Consultant_CNIC_Verify  extends AppCompatActivity {
     ImageView CNIC_Frnt,CNIC_Bck;
-    Button select_Frnt_img,Bck_img;
     FloatingActionButton CNICFrntBtn, CNICBckBtn;
     ImageButton move_next;
 

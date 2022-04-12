@@ -1,14 +1,14 @@
 package pk.edu.uiit.businessconsultant.ModelClasses;
 
 public class BusinessInfo {
-    String Question,Answers,UID;
+    String Question,Answers;
 
 
 
-    public BusinessInfo(String uid,String question, String answers) {
+    public BusinessInfo(String question, String answers) {
         Question = question;
         Answers = answers;
-        UID=uid;
+
 
     }
 
@@ -30,11 +30,5 @@ public class BusinessInfo {
     public void setAnswers(String answers) {
         Answers = answers;
     }
-    public String getUID() {
-        return UID;
-    }
 
-    public void setUID(String UID) {
-        this.UID = UID;
-    }
 }

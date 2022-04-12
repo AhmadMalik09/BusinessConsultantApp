@@ -23,14 +23,16 @@ public class Add_Data extends AppCompatActivity {
     Button btnAddData;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
-    public static  String questions,answers;
+    public static  String questions,answers,UID;
     private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_data);
         initialize();
         performAction();
+
     }
     public void performAction(){
         btnAddData.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +42,7 @@ public class Add_Data extends AppCompatActivity {
                 progressDialog.show();
                 questions=Question.getText().toString();
                 answers=Answer.getText().toString();
+
                 if(questions.isEmpty()){
                     Toast.makeText(Add_Data.this, "Please Add Data", Toast.LENGTH_SHORT).show();
                 }
@@ -48,10 +51,11 @@ public class Add_Data extends AppCompatActivity {
                 }
                 Question.setText("");
                 Answer.setText(" ");
-                BusinessInfo info=new BusinessInfo(firebaseAuth.getUid(),questions,answers);
+                BusinessInfo info=new BusinessInfo(questions,answers);
+                UID=firebaseAuth.getUid().toString();
                 database=FirebaseDatabase.getInstance();
                 database.getReference().child("BusinessInfo")
-                        .child(firebaseAuth.getUid()+"~BusinessInfo~")
+                        .child(firebaseAuth.getUid())
                         .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

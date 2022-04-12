@@ -32,12 +32,13 @@ import pk.edu.uiit.businessconsultant.ModelClasses.Messages;
 import pk.edu.uiit.businessconsultant.R;
 
 public class Chat extends AppCompatActivity {
-    String consultantPicture,consultantName,consultantUID,UserUID;
+    String consultantPicture,consultantName,consultantUID;
     CircleImageView profileImage;
     TextView Name;
     CardView sendBtn;
     EditText textMessage;
     RecyclerView recyclerView;
+     String UserID;
     ImageButton backButton;
     FirebaseDatabase database;
     FirebaseAuth firebaseAuth;
@@ -45,6 +46,7 @@ public class Chat extends AppCompatActivity {
     public  static  String  consultantImage;
     String senderRoom;
     String receiverRoom;
+    public static String msgUID;
     ArrayList<Messages>messagesArrayList;
     messagesAdapter adapter;
     @Override
@@ -69,9 +71,9 @@ public class Chat extends AppCompatActivity {
             profileImage.setImageResource(R.drawable.profile);
         }
         Name.setText(""+consultantName);
-        UserUID=firebaseAuth.getUid();
-        senderRoom=UserUID +  consultantUID;
-        receiverRoom=consultantUID+UserUID;
+        UserID=firebaseAuth.getUid();
+        senderRoom=UserID +  consultantUID;
+        receiverRoom=consultantUID+UserID;
         // add linear layout manager
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
@@ -104,8 +106,9 @@ public class Chat extends AppCompatActivity {
                     if (accountType.equals("User")){
                         userProfileImage=snapshot.child("profileImage").getValue().toString();
                     }
+                     consultantImage=consultantPicture;
                 }
-                consultantImage=consultantPicture;
+
             }
 
             @Override
@@ -128,7 +131,7 @@ public class Chat extends AppCompatActivity {
                 textMessage.setText("");
                 Date date= new Date();
 
-                Messages messages=new Messages(Message, UserUID,consultantUID,date.getTime());
+                Messages messages=new Messages(Message, UserID,date.getTime());
                 database=FirebaseDatabase.getInstance();
                 database.getReference().child("Chats")
                         .child(senderRoom)
