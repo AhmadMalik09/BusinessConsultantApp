@@ -24,9 +24,9 @@ import pk.edu.uiit.businessconsultant.ModelClasses.BusinessInfo;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
-public class agriculture_consultancy extends AppCompatActivity {
+public class Enterpreneur_Ship extends AppCompatActivity {
     RecyclerView recyclerView;
-    Button goForChat;
+    Button  goForChat;;
     dataAdapter adapter;
     ArrayList<BusinessInfo> infoArrayList;
     Add_Data data;
@@ -34,7 +34,7 @@ public class agriculture_consultancy extends AppCompatActivity {
     FirebaseDatabase database;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.agriculture_consultancy);
+        setContentView(R.layout.entrepreneurship);
         initialize();
         performance();
         goForChat();
@@ -48,7 +48,7 @@ public class agriculture_consultancy extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
                     String Field = ""+dataSnapshot.child("field").getValue();
-                    if(Field.equals("Agriculture")){
+                    if(Field.equals("Enterpreneur")){
                         BusinessInfo info=dataSnapshot.getValue(BusinessInfo.class);
                         infoArrayList.add(info);
                     }
@@ -66,7 +66,7 @@ public class agriculture_consultancy extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter=new dataAdapter(agriculture_consultancy.this,infoArrayList);
+        adapter=new dataAdapter(Enterpreneur_Ship.this,infoArrayList);
         recyclerView.setAdapter(adapter);
 
     }
@@ -74,13 +74,13 @@ public class agriculture_consultancy extends AppCompatActivity {
         goForChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(agriculture_consultancy.this, loading_Consultants.class);
+                Intent intent=new Intent(Enterpreneur_Ship.this, loading_Consultants.class);
                 startActivity(intent);
             }
         });
     }
     public void initialize(){
-        goForChat=(Button) findViewById(R.id.Agri_consultant);
+        goForChat=(Button) findViewById(R.id.enterpreneur_consultant);
         firebaseAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
     }

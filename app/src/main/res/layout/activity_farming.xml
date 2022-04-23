@@ -8,8 +8,9 @@
         android:id="@+id/displayImage"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@drawable/entrepreneur"
-        ></ImageView>
+        android:src="@drawable/agri_farming">
+
+    </ImageView>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
@@ -22,7 +23,6 @@
             android:layout_height="match_parent"
             app:cardCornerRadius="16dp"
             app:cardElevation="10dp">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="439dp"
@@ -30,48 +30,45 @@
                 android:focusableInTouchMode="false"
                 android:orientation="vertical"
                 android:padding="20dp">
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/QA"
                     android:layout_width="match_parent"
                     android:layout_height="300dp">
-
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:weightSum="12"
                     android:gravity="center"
-                    android:weightSum="12">
+                    android:layout_marginTop="30dp">
 
 
                     <View
                         android:layout_width="50dp"
                         android:layout_height="2dp"
-                        android:layout_weight="3"
-                        android:background="#00ADC1" />
+                        android:background="#00ADC1"
+                        android:layout_weight="3"/>
 
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="6"
                         android:text="For More Info "
-                        android:textAlignment="center"
+                        android:layout_weight="6"
+                        android:textSize="12sp"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
+                        android:textAlignment="center"/>
 
                     <View
                         android:layout_width="50dp"
                         android:layout_height="2dp"
-                        android:layout_weight="3"
-                        android:background="#00ADC1" />
+                        android:background="#00ADC1"
+                        android:layout_weight="3"/>
 
                 </LinearLayout>
-
                 <Button
-                    android:id="@+id/enterpreneur_consultant"
+                    android:id="@+id/farming_consultant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -87,4 +84,5 @@
 
 
     </ScrollView>
+
 </RelativeLayout>

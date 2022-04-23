@@ -3,7 +3,7 @@
     package="pk.edu.uiit.businessconsultant">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon"
@@ -13,13 +13,17 @@
         android:theme="@style/Theme.BusinessConsultant"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activites.farming"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Activites.Add_Data"
             android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activites.ECommerce"
             android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activites.update_profile"
             android:exported="false"
@@ -78,15 +82,7 @@
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activites.ecommerce_consultancy"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Activites.agriculture_consultancy"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Activites.farming_consultancy"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -98,7 +94,7 @@
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activites.Enterpreneue_Ship"
+            android:name=".Activites.Enterpreneur_Ship"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -24,22 +24,28 @@ import pk.edu.uiit.businessconsultant.ModelClasses.BusinessInfo;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
-public class agriculture_consultancy extends AppCompatActivity {
+public class farming extends AppCompatActivity {
     RecyclerView recyclerView;
-    Button goForChat;
+    Button  goForChat;;
     dataAdapter adapter;
     ArrayList<BusinessInfo> infoArrayList;
     Add_Data data;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.agriculture_consultancy);
+        setContentView(R.layout.activity_farming);
         initialize();
-        performance();
+        performAction();
         goForChat();
     }
-    public void performance(){
+    public void initialize(){
+        goForChat=(Button) findViewById(R.id.farming_consultant);
+        firebaseAuth=FirebaseAuth.getInstance();
+        database=FirebaseDatabase.getInstance();
+    }
+    public void performAction(){
         infoArrayList=new ArrayList<>();
         data=new Add_Data();
         DatabaseReference reference=database.getReference().child("BusinessInfo").child("Info");
@@ -48,7 +54,7 @@ public class agriculture_consultancy extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
                     String Field = ""+dataSnapshot.child("field").getValue();
-                    if(Field.equals("Agriculture")){
+                    if(Field.equals("Farming")){
                         BusinessInfo info=dataSnapshot.getValue(BusinessInfo.class);
                         infoArrayList.add(info);
                     }
@@ -66,7 +72,7 @@ public class agriculture_consultancy extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter=new dataAdapter(agriculture_consultancy.this,infoArrayList);
+        adapter=new dataAdapter(farming.this,infoArrayList);
         recyclerView.setAdapter(adapter);
 
     }
@@ -74,15 +80,10 @@ public class agriculture_consultancy extends AppCompatActivity {
         goForChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(agriculture_consultancy.this, loading_Consultants.class);
+                Intent intent=new Intent(farming.this, loading_Consultants.class);
                 startActivity(intent);
             }
         });
-    }
-    public void initialize(){
-        goForChat=(Button) findViewById(R.id.Agri_consultant);
-        firebaseAuth=FirebaseAuth.getInstance();
-        database=FirebaseDatabase.getInstance();
     }
 
 }

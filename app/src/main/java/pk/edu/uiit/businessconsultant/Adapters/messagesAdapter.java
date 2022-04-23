@@ -55,14 +55,24 @@ public class messagesAdapter extends RecyclerView.Adapter {
             //set Incoming Messages
             viewHolder.msgText.setText(messages.getMessage());
             //now set ProfileImage of user(sender)
-            Picasso.get().load(userProfileImage).fit().centerCrop().into(viewHolder.senderProfile);
+            try {
+                Picasso.get().load(userProfileImage).fit().centerCrop().into(viewHolder.senderProfile);
+            }
+            catch (Exception exception){
+                ((senderViewHolder) holder).senderProfile.setImageResource(R.drawable.profile);
+            }
         }
         else {
             receiverVieeHolder viewHolder=(receiverVieeHolder) holder;
             //set received Messages
             viewHolder.textMsg.setText(messages.getMessage());
             //now set ProfileImage of Consultant(receiver)
-            Picasso.get().load(consultantImage).fit().centerCrop().into(viewHolder. receiverProfile);
+            try {
+                Picasso.get().load(consultantImage).fit().centerCrop().into(viewHolder. receiverProfile);
+            }
+            catch (Exception exception){
+                ((receiverVieeHolder) holder).receiverProfile.setImageResource(R.drawable.profile);
+            }
         }
 
     }

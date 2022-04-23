@@ -4,98 +4,88 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import pk.edu.uiit.businessconsultant.Adapters.dataAdapter;
+import pk.edu.uiit.businessconsultant.ModelClasses.BusinessInfo;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
 public class stock_market_consultancy extends AppCompatActivity {
-    TextView stock_market,stock_platforms,stock_profit,trading,Technical_terms;
-    TextView  stock_market_ans,stock_platforms_ans,stock_profit_ans,trading_ans,Technical_terms_ans;
+    RecyclerView recyclerView;
     Button goForChat;
+    ;
+    dataAdapter adapter;
+    ArrayList<BusinessInfo> infoArrayList;
+    Add_Data data;
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase database;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stock_market_consultancy);
         initialize();
         performance();
-        stock_market_ans.setVisibility(View.GONE);
-        stock_platforms_ans.setVisibility(View.GONE);
-        stock_profit_ans.setVisibility(View.GONE);
-        trading_ans.setVisibility(View.GONE);
-        Technical_terms_ans.setVisibility(View.GONE);
+        goForChat();
     }
-    public void performance(){
-        stock_market.setOnClickListener(new View.OnClickListener() {
+
+    public void performance() {
+        infoArrayList = new ArrayList<>();
+        data = new Add_Data();
+        DatabaseReference reference = database.getReference().child("BusinessInfo").child("Info");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                stock_market_ans.setVisibility(View.VISIBLE);
-                stock_platforms_ans.setVisibility(View.GONE);
-                stock_profit_ans.setVisibility(View.GONE);
-                trading_ans.setVisibility(View.GONE);
-                Technical_terms_ans.setVisibility(View.GONE);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String Field = "" + dataSnapshot.child("field").getValue();
+                    if (Field.equals("Stock-Market")) {
+                        BusinessInfo info = dataSnapshot.getValue(BusinessInfo.class);
+                        infoArrayList.add(info);
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-        stock_platforms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stock_market_ans.setVisibility(View.GONE);
-                stock_platforms_ans.setVisibility(View.VISIBLE);
-                stock_profit_ans.setVisibility(View.GONE);
-                trading_ans.setVisibility(View.GONE);
-                Technical_terms_ans.setVisibility(View.GONE);
-            }
-        });
-        stock_profit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stock_market_ans.setVisibility(View.GONE);
-                stock_platforms_ans.setVisibility(View.GONE);
-                stock_profit_ans.setVisibility(View.VISIBLE);
-                trading_ans.setVisibility(View.GONE);
-                Technical_terms_ans.setVisibility(View.GONE);
-            }
-        });
-        trading.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stock_market_ans.setVisibility(View.GONE);
-                stock_platforms_ans.setVisibility(View.GONE);
-                stock_profit_ans.setVisibility(View.GONE);
-                trading_ans.setVisibility(View.VISIBLE);
-                Technical_terms_ans.setVisibility(View.GONE);
-            }
-        });
-        Technical_terms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stock_market_ans.setVisibility(View.GONE);
-                stock_platforms_ans.setVisibility(View.GONE);
-                stock_profit_ans.setVisibility(View.GONE);
-                trading_ans.setVisibility(View.GONE);
-                Technical_terms_ans.setVisibility(View.VISIBLE);
-            }
-        });
+        recyclerView = (RecyclerView) findViewById(R.id.QA);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new dataAdapter(stock_market_consultancy.this, infoArrayList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    public void goForChat() {
         goForChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(stock_market_consultancy.this, loading_Consultants.class);
+                Intent intent = new Intent(stock_market_consultancy.this, loading_Consultants.class);
                 startActivity(intent);
             }
         });
     }
-    public void initialize(){
-        stock_market=(TextView) findViewById(R.id.about_s_market);
-        stock_platforms=(TextView) findViewById(R.id.stock_platforms);
-        stock_profit=(TextView) findViewById(R.id.profit_loss_stock);
-        trading=(TextView) findViewById(R.id.stock_trading);
-        Technical_terms=(TextView)findViewById(R.id.stock_Technical_terms) ;
-        stock_market_ans=(TextView) findViewById(R.id.stock_ans);
-        stock_platforms_ans=(TextView) findViewById(R.id.stock_platforms_answer);
-        stock_profit_ans=(TextView) findViewById(R.id.stock_profit_loss_answer);
-        trading_ans=(TextView) findViewById(R.id.stock_trading_ans);
-        Technical_terms_ans=(TextView) findViewById(R.id.Technical_terms_dtl);
-        goForChat=(Button) findViewById(R.id.stock_consultant);
+
+    public void initialize() {
+        goForChat = (Button) findViewById(R.id.stock_market_consultant);
+        firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
     }
 }

@@ -5,14 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#00ADC1">
     <ImageView
+        android:id="@+id/displayImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-50dp"
+        android:layout_height="300dp"
         android:src="@drawable/agri"
         ></ImageView>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_below="@id/displayImage">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/personalDetailsCard"
@@ -20,157 +21,57 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            android:layout_marginTop="70dp">
+            app:cardElevation="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="439dp"
                 android:layout_gravity="center"
                 android:focusableInTouchMode="false"
                 android:orientation="vertical"
-                android:padding="20dp"
-                >
+                android:padding="20dp">
 
-
-                <TextView
-                    android:id="@+id/about_crop"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/QA"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Suitable Crops?"
-                    android:textSize="20sp"
-                    android:background="@drawable/textview_background"
-                    android:singleLine="true"
-                    android:layout_marginBottom="15dp"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:onClick="onClick"
-                    android:autoLink="all"/>
+                    android:layout_height="300dp">
 
-                <TextView
-                    android:id="@+id/abt_crop_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/About_real_estate"
-                    android:background="@drawable/invisible_textview_design"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="15dp"
-                    android:padding="10dp"
-                    android:visibility='invisible'
-                    />
-
-
-                <TextView
-                    android:id="@+id/season"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Suitable Season ?"
-                    android:singleLine="true"
-                    android:background="@drawable/textview_background"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:layout_marginBottom="15dp"
-                    android:padding="10dp"
-                    android:onClick="onClick"
-                    android:autoLink="all"/>
-
-
-                <TextView
-                    android:id="@+id/abt_seasonr"
-                    style="@style/modifiedEditText"
-                    android:text="@string/oppertunities"
-                    android:layout_marginBottom="15dp"
-                    android:padding="10dp"
-                    android:visibility='invisible'
-                    android:background="@drawable/invisible_textview_design"
-                    android:textColor="@color/black"
-                    />
-
-
-                <TextView
-                    android:id="@+id/agri_profit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Average Profit Margin"
-                    android:singleLine="true"
-                    android:background="@drawable/textview_background"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:layout_marginBottom="15dp"
-                    android:padding="10dp"
-                    android:onClick="onClick"
-                    android:autoLink="all"/>
-
-
-                <TextView
-                    android:id="@+id/agri_profit_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Profit_Loss"
-                    android:visibility='invisible'
-                    android:layout_marginBottom="15dp"
-                    android:padding="10dp"
-                    android:background="@drawable/invisible_textview_design"
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:id="@+id/plantination"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Plantination methodology"
-                    android:singleLine="true"
-                    android:textSize="20sp"
-                    android:background="@drawable/textview_background"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="15dp"
-                    android:padding="10dp"
-                    android:onClick="onClick"
-                    android:autoLink="all"/>
-
-
-                <TextView
-                    android:id="@+id/plantination_way"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/oppertunities_against_investment"
-                    android:layout_marginBottom="5dp"
-                    android:padding="10dp"
-                    android:background="@drawable/invisible_textview_design"
-                    android:textColor="@color/black"
-                    android:visibility='invisible'
-                    />
+                </androidx.recyclerview.widget.RecyclerView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="12"
+                    android:layout_marginTop="30dp"
                     android:gravity="center"
-                    android:layout_marginTop="30dp">
+                    android:weightSum="12">
+
 
                     <View
                         android:layout_width="50dp"
                         android:layout_height="2dp"
-                        android:background="#00ADC1"
-                        android:layout_weight="3"/>
+                        android:layout_weight="3"
+                        android:background="#00ADC1" />
 
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="For More Info "
                         android:layout_weight="6"
-                        android:textSize="12sp"
+                        android:text="For More Info "
+                        android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textAlignment="center"/>
+                        android:textSize="12sp" />
 
                     <View
                         android:layout_width="50dp"
                         android:layout_height="2dp"
-                        android:background="#00ADC1"
-                        android:layout_weight="3"/>
+                        android:layout_weight="3"
+                        android:background="#00ADC1" />
 
                 </LinearLayout>
+
                 <Button
-                    android:id="@+id/agri_consultant"
+                    android:id="@+id/Agri_consultant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

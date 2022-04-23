@@ -4,64 +4,73 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import pk.edu.uiit.businessconsultant.Adapters.dataAdapter;
+import pk.edu.uiit.businessconsultant.ModelClasses.BusinessInfo;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
 public class IT_Consultancy extends AppCompatActivity {
-    TextView IT_Business,IT_startup,IT_setup,Team_Building;
-    TextView IT_Business_ans,IT_startup_ans,IT_setup_ans,Team_Building_ans;
-    Button goForChat;
+    RecyclerView recyclerView;
+    Button  goForChat;;
+    dataAdapter adapter;
+    ArrayList<BusinessInfo> infoArrayList;
+    Add_Data data;
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase database;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_tect_consultancy);
         initialize();
         performance();
-        IT_Business_ans.setVisibility(View.GONE);
-        IT_startup_ans.setVisibility(View.GONE);
-        IT_setup_ans.setVisibility(View.GONE);
-        Team_Building_ans.setVisibility(View.GONE);
+        goForChat();
     }
     public void performance(){
-        IT_Business.setOnClickListener(new View.OnClickListener() {
+        infoArrayList=new ArrayList<>();
+        data=new Add_Data();
+        DatabaseReference reference=database.getReference().child("BusinessInfo").child("Info");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                IT_Business_ans.setVisibility(View.VISIBLE);
-                IT_startup_ans.setVisibility(View.GONE);
-                IT_setup_ans.setVisibility(View.GONE);
-                Team_Building_ans.setVisibility(View.GONE);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
+                    String Field = ""+dataSnapshot.child("field").getValue();
+                    if(Field.equals("IT")){
+                        BusinessInfo info=dataSnapshot.getValue(BusinessInfo.class);
+                        infoArrayList.add(info);
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-        IT_startup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IT_Business_ans.setVisibility(View.GONE);
-                IT_startup_ans.setVisibility(View.VISIBLE);
-                IT_setup_ans.setVisibility(View.GONE);
-                Team_Building_ans.setVisibility(View.GONE);
-            }
-        });
-        IT_setup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IT_Business_ans.setVisibility(View.GONE);
-                IT_startup_ans.setVisibility(View.GONE);
-                IT_setup_ans.setVisibility(View.VISIBLE);
-                Team_Building_ans.setVisibility(View.GONE);
-            }
-        });
-        Team_Building.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IT_Business_ans.setVisibility(View.GONE);
-                IT_startup_ans.setVisibility(View.GONE);
-                IT_setup_ans.setVisibility(View.GONE);
-                Team_Building_ans.setVisibility(View.VISIBLE);
-            }
-        });
+        recyclerView=(RecyclerView) findViewById(R.id.QA);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter=new dataAdapter(IT_Consultancy.this,infoArrayList);
+        recyclerView.setAdapter(adapter);
+
+    }
+    public void goForChat(){
         goForChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,15 +80,9 @@ public class IT_Consultancy extends AppCompatActivity {
         });
     }
     public void initialize(){
-        IT_Business=(TextView) findViewById(R.id.IT_business);
-        IT_startup=(TextView) findViewById(R.id.IT_startup);
-        IT_setup=(TextView) findViewById(R.id.setup_location);
-        Team_Building=(TextView) findViewById(R.id.IT_team);
-        IT_Business_ans=(TextView) findViewById(R.id.IT_business_Dtl);
-        IT_startup_ans=(TextView) findViewById(R.id.IT_startup_dtl);
-        IT_setup_ans=(TextView) findViewById(R.id.setup_location_dtl);
-        Team_Building_ans=(TextView) findViewById(R.id.team_solution);
         goForChat=(Button) findViewById(R.id.IT_consultant);
+        firebaseAuth=FirebaseAuth.getInstance();
+        database=FirebaseDatabase.getInstance();
     }
 
 }

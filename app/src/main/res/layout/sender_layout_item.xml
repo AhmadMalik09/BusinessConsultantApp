@@ -6,8 +6,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
@@ -29,11 +29,12 @@
         android:layout_margin="5dp"
         android:background="@drawable/sender_text_design"
         android:textColor="@color/white"
-       android:paddingLeft="10dp"
+        android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp">
 
     </TextView>
 

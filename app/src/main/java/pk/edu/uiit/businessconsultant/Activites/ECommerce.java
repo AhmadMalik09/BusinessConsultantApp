@@ -1,6 +1,8 @@
 package pk.edu.uiit.businessconsultant.Activites;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 
 import pk.edu.uiit.businessconsultant.Adapters.dataAdapter;
 import pk.edu.uiit.businessconsultant.ModelClasses.BusinessInfo;
+import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
 public class ECommerce extends AppCompatActivity {
@@ -36,22 +39,27 @@ public class ECommerce extends AppCompatActivity {
 
         initialize();
         performAction();
+        goForChat();
     }
     public void initialize(){
-        btnStartChat=(Button) findViewById(R.id.real_estate_consultant);
+        btnStartChat=(Button) findViewById(R.id.ECommerce_consultant);
         firebaseAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
     }
     public void performAction(){
         infoArrayList=new ArrayList<>();
-        DatabaseReference reference=database.getReference().child("BusinessInfo");
+        data=new Add_Data();
+        DatabaseReference reference=database.getReference().child("BusinessInfo").child("Info");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                infoArrayList.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
+                    String Field = ""+dataSnapshot.child("field").getValue();
+                    if(Field.equals("E-Commerce")){
                         BusinessInfo info=dataSnapshot.getValue(BusinessInfo.class);
                         infoArrayList.add(info);
+                    }
+
                 }
 
                 adapter.notifyDataSetChanged();
@@ -69,5 +77,14 @@ public class ECommerce extends AppCompatActivity {
         adapter=new dataAdapter(ECommerce.this,infoArrayList);
         recyclerView.setAdapter(adapter);
 
+    }
+    public void goForChat(){
+        btnStartChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ECommerce.this, loading_Consultants.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -4,64 +4,73 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import pk.edu.uiit.businessconsultant.Adapters.dataAdapter;
+import pk.edu.uiit.businessconsultant.ModelClasses.BusinessInfo;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_Consultants;
 import pk.edu.uiit.businessconsultant.R;
 
 public class real_estate_consultancy extends AppCompatActivity {
-  TextView real_estate,real_oppertunity,profit_loss,investment;
-  TextView real_estate_ans,real_oppertunity_ans,profit_loss_ans,investment_ans;
-    Button goForChat;
+    RecyclerView recyclerView;
+    Button  goForChat;;
+    dataAdapter adapter;
+    ArrayList<BusinessInfo> infoArrayList;
+    Add_Data data;
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase database;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.real_estate_consultancy);
         initialize();
         performance();
-        real_estate_ans.setVisibility(View.GONE);
-        real_oppertunity_ans.setVisibility(View.GONE);
-        profit_loss_ans.setVisibility(View.GONE);
-        investment_ans.setVisibility(View.GONE);
+        goForChat();
     }
     public void performance(){
-        real_estate.setOnClickListener(new View.OnClickListener() {
+        infoArrayList=new ArrayList<>();
+        data=new Add_Data();
+        DatabaseReference reference=database.getReference().child("BusinessInfo").child("Info");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                real_estate_ans.setVisibility(View.VISIBLE);
-                real_oppertunity_ans.setVisibility(View.GONE);
-                profit_loss_ans.setVisibility(View.GONE);
-                investment_ans.setVisibility(View.GONE);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
+                    String Field = ""+dataSnapshot.child("field").getValue();
+                    if(Field.equals("Real-Estate")){
+                        BusinessInfo info=dataSnapshot.getValue(BusinessInfo.class);
+                        infoArrayList.add(info);
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-        real_oppertunity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                real_estate_ans.setVisibility(View.GONE);
-                real_oppertunity_ans.setVisibility(View.VISIBLE);
-                profit_loss_ans.setVisibility(View.GONE);
-                investment_ans.setVisibility(View.GONE);
-            }
-        });
-        profit_loss.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                real_estate_ans.setVisibility(View.GONE);
-                real_oppertunity_ans.setVisibility(View.GONE);
-                profit_loss_ans.setVisibility(View.VISIBLE);
-                investment_ans.setVisibility(View.GONE);
-            }
-        });
-        investment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                real_estate_ans.setVisibility(View.GONE);
-                real_oppertunity_ans.setVisibility(View.GONE);
-                profit_loss_ans.setVisibility(View.GONE);
-                investment_ans.setVisibility(View.VISIBLE);
-            }
-        });
+        recyclerView=(RecyclerView) findViewById(R.id.QA);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter=new dataAdapter(real_estate_consultancy.this,infoArrayList);
+        recyclerView.setAdapter(adapter);
+
+    }
+    public void goForChat(){
         goForChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,15 +80,9 @@ public class real_estate_consultancy extends AppCompatActivity {
         });
     }
     public void initialize(){
-        real_estate=(TextView) findViewById(R.id.about_real_estate);
-        real_oppertunity=(TextView) findViewById(R.id.options);
-        profit_loss=(TextView) findViewById(R.id.profit_loss);
-        investment=(TextView) findViewById(R.id.opportunity_against_investment);
-        real_estate_ans=(TextView) findViewById(R.id.real_estate_answer);
-        real_oppertunity_ans=(TextView) findViewById(R.id.investment_options_answer);
-        profit_loss_ans=(TextView) findViewById(R.id.profit_loss_answer);
-        investment_ans=(TextView) findViewById(R.id.opportunity_against_investment_ans);
-        goForChat=(Button) findViewById(R.id.real_estate_consultant);
+        goForChat=(Button) findViewById(R.id.realEstate_consultant);
+        firebaseAuth=FirebaseAuth.getInstance();
+        database=FirebaseDatabase.getInstance();
     }
 
 }

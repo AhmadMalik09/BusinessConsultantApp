@@ -5,15 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#00ADC1">
     <ImageView
+        android:id="@+id/displayImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-100dp"
+        android:layout_height="300dp"
         android:src="@drawable/ecommerce_img">
 
     </ImageView>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_below="@id/displayImage">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/personalDetailsCard"
@@ -21,55 +22,57 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp"
-            android:layout_marginTop="100dp">
+            app:cardElevation="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="439dp"
                 android:layout_gravity="center"
                 android:focusableInTouchMode="false"
                 android:orientation="vertical"
                 android:padding="20dp">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/QA"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="300dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="12"
+                    android:layout_marginTop="30dp"
                     android:gravity="center"
-                    android:layout_marginTop="30dp">
+                    android:weightSum="12">
 
 
                     <View
                         android:layout_width="50dp"
                         android:layout_height="2dp"
-                        android:background="#00ADC1"
-                        android:layout_weight="3"/>
+                        android:layout_weight="3"
+                        android:background="#00ADC1" />
 
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="For More Info "
                         android:layout_weight="6"
-                        android:textSize="12sp"
+                        android:text="For More Info "
+                        android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textAlignment="center"/>
+                        android:textSize="12sp" />
 
                     <View
                         android:layout_width="50dp"
                         android:layout_height="2dp"
-                        android:background="#00ADC1"
-                        android:layout_weight="3"/>
+                        android:layout_weight="3"
+                        android:background="#00ADC1" />
 
                 </LinearLayout>
+
                 <Button
-                    android:id="@+id/real_estate_consultant"
+                    android:id="@+id/ECommerce_consultant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

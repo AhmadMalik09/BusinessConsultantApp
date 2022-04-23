@@ -2,12 +2,16 @@ package pk.edu.uiit.businessconsultant.ModelClasses;
 
 public class BusinessInfo {
     String Question,Answers;
+    String Field;
 
 
 
-    public BusinessInfo(String question, String answers) {
-        Question = question;
-        Answers = answers;
+
+    public BusinessInfo(String question, String answers,String Field) {
+        this.Question = question;
+        this.Answers = answers;
+        this.Field=Field;
+
 
 
     }
@@ -31,4 +35,11 @@ public class BusinessInfo {
         Answers = answers;
     }
 
+    public String getField() {
+        return Field;
+    }
+
+    public void setField(String field) {
+        Field = field;
+    }
 }

@@ -102,7 +102,7 @@ public class user_dashboard extends AppCompatActivity {
         farming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(user_dashboard.this,farming_consultancy.class);
+                Intent intent=new Intent(user_dashboard.this,farming.class);
                 user_dashboard.this.startActivity(intent);
             }
         });
@@ -116,7 +116,7 @@ public class user_dashboard extends AppCompatActivity {
         new_startup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(user_dashboard.this,Enterpreneue_Ship.class);
+                Intent intent=new Intent(user_dashboard.this, Enterpreneur_Ship.class);
                 user_dashboard.this.startActivity(intent);
             }
         });

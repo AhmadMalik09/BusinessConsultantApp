@@ -106,9 +106,9 @@ public class Chat extends AppCompatActivity {
                     if (accountType.equals("User")){
                         userProfileImage=snapshot.child("profileImage").getValue().toString();
                     }
-                     consultantImage=consultantPicture;
-                }
 
+                }
+                consultantImage=consultantPicture;
             }
 
             @Override
@@ -152,6 +152,7 @@ public class Chat extends AppCompatActivity {
 
                     }
                 });
+
             }
         });
     }
