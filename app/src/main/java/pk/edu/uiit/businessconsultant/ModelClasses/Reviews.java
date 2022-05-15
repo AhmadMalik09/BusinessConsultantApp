@@ -16,6 +16,10 @@ public class Reviews {
         this.timestamp = timestamp;
     }
 
+    public Reviews(String ratings) {
+        Ratings = ratings;
+    }
+
     public String getUid() {
         return uid;
     }

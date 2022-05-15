@@ -29,6 +29,7 @@ public class loading_Consultants extends AppCompatActivity {
     RecyclerView recyclerView;
     userAdapter adapter;
     FirebaseDatabase database;
+
     ArrayList<FirebaseHelper> usersArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class loading_Consultants extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser()== null){
             startActivity(new Intent(loading_Consultants.this, login.class));
         }
+
         // Back Button Click Listerner
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +74,8 @@ public class loading_Consultants extends AppCompatActivity {
                 startActivity(new Intent(loading_Consultants.this, agriculture_consultancy.class));
             }
         });
+
+
     }
 
 }

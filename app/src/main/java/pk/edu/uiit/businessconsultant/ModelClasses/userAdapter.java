@@ -5,11 +5,17 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,10 +28,10 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.viewholder>{
     Context loading_consultants;
     ArrayList<FirebaseHelper> usersArrayList ;
     private FirebaseHelper users;
-
     public userAdapter(loading_Consultants loading_consultants, ArrayList<FirebaseHelper> usersArrayList) {
             this.loading_consultants=loading_consultants;
             this.usersArrayList = usersArrayList;
+
     }
 
     @NonNull
@@ -46,6 +52,7 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.viewholder>{
         catch (Exception exception){
             holder.circleImageView.setImageResource(R.drawable.profile);
         }
+        loadRatings(users,holder);
         //Creating Click Listener moving toward Chat activity
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +65,33 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.viewholder>{
             }
         });
     }
+    float  ratingSum = 0;
+    private void loadRatings(FirebaseHelper users,viewholder holder){
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(users.getUid()+"~Consultant~").child("Ratings")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        ratingSum = 0;
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            float rating = Float.parseFloat(""+ds.child("ratings").getValue()); // e.g. 4.5
+                            ratingSum = ratingSum + rating; // For Average, Add(Addition Of) All Ratings, Later Will Divide It By Number Of Reviews
+                        }
+                        long numberOfReviews = snapshot.getChildrenCount();
+                        float avgRating = ratingSum/numberOfReviews;
+                        holder.ratingBar.setRating(avgRating);
 
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
+}
 
 
     @Override
@@ -68,11 +101,13 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.viewholder>{
     class viewholder extends RecyclerView.ViewHolder {
         CircleImageView circleImageView;
         TextView ConsultantName, Field;
+        RatingBar ratingBar;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             circleImageView= itemView.findViewById(R.id.consult_img);
             ConsultantName= itemView.findViewById(R.id.CName);
             Field= itemView.findViewById(R.id.CField);
+            ratingBar=itemView.findViewById(R.id.Avgrating);
         }
     }
 }

@@ -100,8 +100,8 @@ public class review_Adapter extends RecyclerView.Adapter<review_Adapter.viewHold
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-           userProfile=itemView.findViewById(R.id.Usrprofile);
-          Name=itemView.findViewById(R.id.userName);
+            userProfile=itemView.findViewById(R.id.Usrprofile);
+            Name=itemView.findViewById(R.id.userName);
             dataTime=itemView.findViewById(R.id.dateTv);
             Review=itemView.findViewById(R.id.reviewTv);
            ratingBar=itemView.findViewById(R.id.ratingBAR);

@@ -40,7 +40,18 @@
                 android:textSize="13sp"
                 android:textColor="@color/black">
             </TextView>
+            <RatingBar
+                android:id="@+id/Avgrating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:isIndicator="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="-18dp"
 
+                />
         </LinearLayout>
 
 
