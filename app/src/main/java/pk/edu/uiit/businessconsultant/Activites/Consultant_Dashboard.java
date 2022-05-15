@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.ModelClasses.FirebaseHelper;
+import pk.edu.uiit.businessconsultant.ModelClasses.loading_reviews;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_users;
 import pk.edu.uiit.businessconsultant.R;
 
@@ -36,7 +37,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
     TextView Consultant_Name,Expertise;
     FirebaseAuth mAuth;
     ImageButton logout;
-    Button view_profile,Chat_Box,Add_Data;
+    Button view_profile,Chat_Box,Add_Data,Review;
     RatingBar ratingBar;
    FirebaseHelper users;
    CircleImageView profilePicture;
@@ -56,6 +57,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
         }
         if(user!=null){
             loadMyInfo();
+           loadMyRatings();
         }
     }
     private void loadMyInfo() {
@@ -100,6 +102,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
     profilePicture=(CircleImageView) findViewById(R.id.profilePic);
     Chat_Box=(Button) findViewById(R.id.chat_box);
     Add_Data=(Button) findViewById(R.id.add_data);
+    Review=(Button) findViewById(R.id.consult_ratings);
     }
 
     public void performAction(){
@@ -152,6 +155,13 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
                 startActivity(intent);
             }
         });
+        Review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Consultant_Dashboard.this, loading_reviews.class);
+                startActivity(intent);
+            }
+        });
     }
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;
@@ -177,6 +187,30 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    float  ratingSum = 0;
+    public void loadMyRatings(){
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(mAuth.getUid()+"~Consultant~").child("Ratings")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        ratingSum = 0;
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            float rating = Float.parseFloat(""+ds.child("ratings").getValue()); // e.g. 4.5
+                            ratingSum = ratingSum + rating; // For Average, Add(Addition Of) All Ratings, Later Will Divide It By Number Of Reviews
+                        }
+                        long numberOfReviews = snapshot.getChildrenCount();
+                        float avgRating = ratingSum/numberOfReviews;
+                        ratingBar.setRating(avgRating);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
     
 }

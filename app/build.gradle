@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'com.google.firebase:firebase-firestore:24.0.1'
+    implementation 'com.google.firebase:firebase-messaging:23.0.2'
     testImplementation 'junit:junit:'
     implementation 'com.google.android.material:material:1.5.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -71,6 +72,9 @@ dependencies {
 
         //Image Play Dependency "Picasso"
         implementation 'com.squareup.picasso:picasso:2.71828'
+
+        //Volley Library for sending and receving Notification
+        implementation 'com.android.volley:volley:1.2.1'
 
     }
 

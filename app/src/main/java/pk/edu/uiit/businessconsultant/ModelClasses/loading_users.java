@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,10 +19,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import pk.edu.uiit.businessconsultant.Adapters.consultantAdapter;
 import pk.edu.uiit.businessconsultant.Activites.Consultant_Dashboard;
-import pk.edu.uiit.businessconsultant.R;
 import pk.edu.uiit.businessconsultant.Activites.login;
+import pk.edu.uiit.businessconsultant.Adapters.consultantAdapter;
+import pk.edu.uiit.businessconsultant.R;
 
 public class loading_users extends AppCompatActivity {
 
@@ -32,7 +31,6 @@ public class loading_users extends AppCompatActivity {
     RecyclerView recyclerView;
     consultantAdapter adapter;
     FirebaseDatabase database;
-    FirebaseUser firebaseUser;
     ArrayList<Users> usersArrayList;
     String senderID;
     @Override
