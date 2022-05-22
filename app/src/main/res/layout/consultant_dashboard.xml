@@ -147,19 +147,19 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/consult_field"
+            android:id="@+id/consult_portfolio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
 
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:background="@drawable/consultant_square"
             android:drawableTop="@drawable/profession"
 
-            android:text=" FIELD"
+            android:text=" PORTFOLIO"
             android:textColor="@color/black" />
 
 

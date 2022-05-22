@@ -28,11 +28,16 @@ import pk.edu.uiit.businessconsultant.R;
 public class review_Adapter extends RecyclerView.Adapter<review_Adapter.viewHolder> {
     Context loading_reviews;
     ArrayList<Reviews> reviewArrayList ;
-
+    Context reviewsFragment;
 
     public review_Adapter(Context loading_reviews, ArrayList<Reviews> reviewArrayList) {
         this.loading_reviews = loading_reviews;
         this.reviewArrayList = reviewArrayList;
+    }
+
+    public review_Adapter(ArrayList<Reviews> reviewArrayList) {
+        this.reviewArrayList = reviewArrayList;
+
     }
 
     @NonNull

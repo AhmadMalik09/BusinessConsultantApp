@@ -28,11 +28,14 @@ public class View_profile extends AppCompatActivity {
     Button updateinfo;
     ImageButton backBtn;
     CircleImageView ProfilePic;
+    TextView ratingCount,Experience,AwardCount;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_profile);
         initialize();
         performAction();
+        ratingCount();                  //show Rating on Profile
+        writeExperienceAndAwards();     //show awards and experience on profile
     }
     @Override
     protected void onStart() {
@@ -61,7 +64,7 @@ public class View_profile extends AppCompatActivity {
                             String Education=""+ds.child("qualification").getValue();
                             String Specification=""+ds.child("specification").getValue();
                             String Phone=""+ds.child("phone").getValue();
-                            // Set Data To Main Seller Activity Views
+                            // Set Data To Profile Activity Views
                             name.setText(Name);
                             field.setText(Expertee);
                             education.setText(Education);
@@ -104,6 +107,58 @@ public class View_profile extends AppCompatActivity {
             }
         });
     }
+    //Get Rating from Database and show it in Rating Section of Profile
+    float  ratingSum = 0;
+    public void ratingCount(){
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(mAuth.getUid()+"~Consultant~").child("Ratings")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        ratingSum = 0;
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            float rating = Float.parseFloat(""+ds.child("ratings").getValue()); // e.g. 4.5
+                            ratingSum = ratingSum + rating; // For Average, Add(Addition Of) All Ratings, Later Will Divide It By Number Of Reviews
+                        }
+                        long numberOfReviews = snapshot.getChildrenCount();
+                        float average = ratingSum/numberOfReviews;
+                        String avgRating=Float.toString(average);
+                        ratingCount.setText(avgRating);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+    public void writeExperienceAndAwards(){
+        DatabaseReference reference1=FirebaseDatabase.getInstance().getReference("Users");
+        reference1.child(mAuth.getUid()+"~Consultant~").child("Portfolio")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            //Get Value from FirebaseDatabase
+                            String experience=""+snapshot.child("experience").getValue();
+                            String no_Of_Awards=""+snapshot.child("no_Of_Awards").getValue();
+
+                            Experience.setText(experience);
+                            AwardCount.setText(no_Of_Awards);
+
+
+                        }
+
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+    }
     public void initialize(){
     name=(TextView) findViewById(R.id.name);
     email=(TextView) findViewById(R.id.email);
@@ -111,6 +166,9 @@ public class View_profile extends AppCompatActivity {
     field=(TextView) findViewById(R.id.Field);
     education=(TextView) findViewById(R.id.education);
     specification=(TextView) findViewById(R.id.certificate);
+    ratingCount=(TextView)findViewById(R.id.ratings);
+    Experience=(TextView)findViewById(R.id.expInYears);
+    AwardCount=(TextView)findViewById(R.id.awardsCount);
     ProfilePic =(CircleImageView)findViewById(R.id.consultantProfile);
     mAuth=FirebaseAuth.getInstance();
     backBtn=(ImageButton) findViewById(R.id.backBtn);

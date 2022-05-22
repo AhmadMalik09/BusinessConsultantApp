@@ -1,6 +1,8 @@
 package pk.edu.uiit.businessconsultant.ModelClasses;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.Activites.Chat;
+import pk.edu.uiit.businessconsultant.Activites.showPortfolio;
 import pk.edu.uiit.businessconsultant.R;
 
 public class userAdapter extends RecyclerView.Adapter<userAdapter.viewholder>{
@@ -57,11 +60,34 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.viewholder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(loading_consultants, Chat.class);
-                intent.putExtra("name",users.getName());
-                intent.putExtra("profilePicture",users.profileImage);
-                intent.putExtra("uid",users.getUid());
-                loading_consultants.startActivity(intent);
+                AlertDialog.Builder builder= new AlertDialog.Builder(loading_consultants);
+                builder.setTitle("Welcome Here...");
+                builder.setIcon(R.drawable.welcome_icon);
+                builder.setMessage("Here is choice for You !")
+                        .setCancelable(false)
+                        .setPositiveButton("Start Chat", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent=new Intent(loading_consultants, Chat.class);
+                                intent.putExtra("name",users.getName());
+                                intent.putExtra("profilePicture",users.profileImage);
+                                intent.putExtra("uid",users.getUid());
+                                loading_consultants.startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("View Portfolio", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent=new Intent(loading_consultants, showPortfolio.class);
+                                intent.putExtra("uid",users.getUid());
+                                loading_consultants.startActivity(intent);
+                            }
+                        });
+
+                AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+
+
             }
         });
     }

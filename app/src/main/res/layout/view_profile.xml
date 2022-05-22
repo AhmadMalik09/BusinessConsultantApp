@@ -76,13 +76,14 @@
                         android:textSize="20sp"
                         />
                     <TextView
+                        android:id="@+id/ratings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5(1)"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/purple_500"/>
+                        android:textColor="@color/app_background"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -98,13 +99,14 @@
                         android:textSize="20sp"
                         />
                     <TextView
+                        android:id="@+id/expInYears"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3Year"
+                        android:text="1Year"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/purple_500"/>
+                        android:textColor="@color/app_background"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -120,13 +122,14 @@
                         android:textSize="20sp"
                         />
                     <TextView
+                        android:id="@+id/awardsCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="05"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/purple_500"/>
+                        android:textColor="@color/app_background"/>
 
                 </LinearLayout>
             </LinearLayout>

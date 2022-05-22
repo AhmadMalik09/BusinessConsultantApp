@@ -37,7 +37,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
     TextView Consultant_Name,Expertise;
     FirebaseAuth mAuth;
     ImageButton logout;
-    Button view_profile,Chat_Box,Add_Data,Review;
+    Button view_profile,Chat_Box,Add_Data,Review,Portfolio;
     RatingBar ratingBar;
    FirebaseHelper users;
    CircleImageView profilePicture;
@@ -103,6 +103,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
     Chat_Box=(Button) findViewById(R.id.chat_box);
     Add_Data=(Button) findViewById(R.id.add_data);
     Review=(Button) findViewById(R.id.consult_ratings);
+    Portfolio=(Button) findViewById(R.id.consult_portfolio);
     }
 
     public void performAction(){
@@ -141,6 +142,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
 
             }
         });
+        //Button for Opening Chat
         Chat_Box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +150,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
                startActivity(intent);
             }
         });
+        //Button For Adding Business data into Users Dashboard
         Add_Data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,10 +158,18 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
                 startActivity(intent);
             }
         });
+        //Button for checking Reviews and Ratings
         Review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Consultant_Dashboard.this, loading_reviews.class);
+                startActivity(intent);
+            }
+        });
+        Portfolio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Consultant_Dashboard.this, consultantPortfolio.class);
                 startActivity(intent);
             }
         });
