@@ -250,15 +250,20 @@
 
     </LinearLayout>
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="770dp"
-        android:background="@color/white"
-        app:menu="@menu/menu"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/third_row">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:background="@color/white"
+            app:menu="@menu/menu"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="95dp"/>
+    </RelativeLayout>
+
 
 </RelativeLayout>
     </ScrollView>

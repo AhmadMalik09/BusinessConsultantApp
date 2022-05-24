@@ -12,6 +12,7 @@
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/contact_list_design.xml" value="0.109" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/edit_profile_btn.xml" value="0.10648148148148148" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/feedback_design.xml" value="0.1" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/how_to_use_icon.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/ic_baseline_account_balance_24.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/ic_baseline_add_business_24.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/ic_baseline_addchart_24.xml" value="0.1" />
@@ -30,12 +31,16 @@
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/ic_login_button.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/invisible_textview_design.xml" value="0.10555555555555556" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/login_button_design.xml" value="0.1" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/logout_icon.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/portfolio_tab_design.xml" value="0.1" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/privacy_policy.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/profile_button.xml" value="0.10648148148148148" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/receiver_text_design.xml" value="0.112" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/sender_text_design.xml" value="0.111" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/setting_tabs_design.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/square.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/textview_background.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/update_password.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/drawable/view_profile.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/font/font.xml" value="0.1" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/activity_add_data.xml" value="0.15896739130434784" />
@@ -83,6 +88,7 @@
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/review_adapter.xml" value="0.25" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/reviews.xml" value="0.27726432532347506" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/sender_layout_item.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/settings.xml" value="0.12731481481481483" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/show_portfolio.xml" value="0.2" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/splash.xml" value="0.22" />
         <entry key="..\:/Users/E5530/AndroidStudioProjects/BusinessConsultant/app/src/main/res/layout/stock_market_consultancy.xml" value="0.1743659420289855" />

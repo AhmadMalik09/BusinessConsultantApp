@@ -36,6 +36,7 @@ public class View_profile extends AppCompatActivity {
         performAction();
         ratingCount();                  //show Rating on Profile
         writeExperienceAndAwards();     //show awards and experience on profile
+
     }
     @Override
     protected void onStart() {
@@ -159,6 +160,7 @@ public class View_profile extends AppCompatActivity {
                 });
 
     }
+
     public void initialize(){
     name=(TextView) findViewById(R.id.name);
     email=(TextView) findViewById(R.id.email);
@@ -173,6 +175,7 @@ public class View_profile extends AppCompatActivity {
     mAuth=FirebaseAuth.getInstance();
     backBtn=(ImageButton) findViewById(R.id.backBtn);
     updateinfo=(Button) findViewById(R.id.updateInfo);
+
     }
 
 }

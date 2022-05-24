@@ -2,6 +2,7 @@ package pk.edu.uiit.businessconsultant.ModelClasses;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,11 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import pk.edu.uiit.businessconsultant.Activites.Consultant_Dashboard;
+import pk.edu.uiit.businessconsultant.Activites.SettingActivity;
 import pk.edu.uiit.businessconsultant.Activites.login;
 import pk.edu.uiit.businessconsultant.Adapters.review_Adapter;
 import pk.edu.uiit.businessconsultant.R;
 
 public class loading_reviews extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
     ImageView backBtn;
     FirebaseAuth firebaseAuth;
     RecyclerView recyclerView;
@@ -36,12 +41,14 @@ public class loading_reviews extends AppCompatActivity {
         setContentView(R.layout.reviews);
         initialize();
         performAction();
+        bottomNagivationBar();
     }
     public void initialize(){
 
         backBtn=(ImageView) findViewById(R.id.reviewBckBtn);
         // Initialization Of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigationView);
     }
     public void performAction(){
         consultantUID=firebaseAuth.getUid();
@@ -82,6 +89,29 @@ public class loading_reviews extends AppCompatActivity {
             }
         });
     }
-
+    public void bottomNagivationBar(){
+        bottomNavigationView.setSelectedItemId(R.id.review);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(),Consultant_Dashboard.class));
+                        overridePendingTransition(0,0);
+                    case R.id.chat:
+                        startActivity(new Intent(getApplicationContext(),loading_users.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.review:
+                        return true;
+                    case R.id.setting:
+                        startActivity(new Intent(getApplicationContext(), SettingActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
 
 }

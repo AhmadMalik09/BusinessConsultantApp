@@ -76,6 +76,8 @@ dependencies {
 
         //Volley Library for sending and receving Notification
         implementation 'com.android.volley:volley:1.2.1'
+        //Firebase Messaging Service
+        implementation 'com.google.firebase:firebase-messaging:19.0.1'
 
     }
 

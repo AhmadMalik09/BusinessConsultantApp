@@ -32,12 +32,12 @@ import pk.edu.uiit.businessconsultant.ModelClasses.loading_reviews;
 import pk.edu.uiit.businessconsultant.ModelClasses.loading_users;
 import pk.edu.uiit.businessconsultant.R;
 
-public class Consultant_Dashboard extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
+public class Consultant_Dashboard extends AppCompatActivity{
     BottomNavigationView bottomNavigationView;
     TextView Consultant_Name,Expertise;
     FirebaseAuth mAuth;
     ImageButton logout;
-    Button view_profile,Chat_Box,Add_Data,Review,Portfolio;
+    Button view_profile,Chat_Box,Add_Data,Review,Portfolio,Settings;
     RatingBar ratingBar;
    FirebaseHelper users;
    CircleImageView profilePicture;
@@ -47,6 +47,7 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
       //  performAction();
         initialize();
         performAction();
+        bottomNagivationBar();
     }
     @Override
     protected void onStart() {
@@ -98,12 +99,14 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
     mAuth=FirebaseAuth.getInstance();
     ratingBar=(RatingBar)findViewById(R.id.ratingBar);
     view_profile=(Button) findViewById(R.id.consult_profile);
+    Settings=(Button)findViewById(R.id.settings);
     users=new FirebaseHelper();
     profilePicture=(CircleImageView) findViewById(R.id.profilePic);
     Chat_Box=(Button) findViewById(R.id.chat_box);
     Add_Data=(Button) findViewById(R.id.add_data);
     Review=(Button) findViewById(R.id.consult_ratings);
     Portfolio=(Button) findViewById(R.id.consult_portfolio);
+    bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottomNavigationView);
     }
 
     public void performAction(){
@@ -173,31 +176,39 @@ public class Consultant_Dashboard extends AppCompatActivity implements Navigatio
                 startActivity(intent);
             }
         });
+        Settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Consultant_Dashboard.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()){
-            case R.id.chat:
-                Toast.makeText(Consultant_Dashboard.this,"Here Chatting will be showed",Toast.LENGTH_LONG).show();
-                return true;
 
-            case R.id.notification:
-                Toast.makeText(Consultant_Dashboard.this,"Here Chatting notification will be appeared",Toast.LENGTH_LONG).show();
-                return true;
-
-            case R.id.user:
-                Toast.makeText(Consultant_Dashboard.this,"Consultant Profile",Toast.LENGTH_LONG).show();
-                return true;
-        }
-        return false;
-    }
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void bottomNagivationBar(){
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        return true;
+                    case R.id.chat:
+                        startActivity(new Intent(getApplicationContext(),loading_users.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.review:
+                        startActivity(new Intent(getApplicationContext(),loading_reviews.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.setting:
+                        startActivity(new Intent(getApplicationContext(),SettingActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
     float  ratingSum = 0;
     public void loadMyRatings(){

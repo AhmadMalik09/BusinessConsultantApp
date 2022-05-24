@@ -2,6 +2,7 @@ package pk.edu.uiit.businessconsultant.Activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,6 +16,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,13 +30,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.Adapters.messagesAdapter;
 import pk.edu.uiit.businessconsultant.ModelClasses.Messages;
-import pk.edu.uiit.businessconsultant.Notifications.FcmNotificationsSender;
+import pk.edu.uiit.businessconsultant.Notifications.MySingleton;
 import pk.edu.uiit.businessconsultant.R;
 
 public class Chat extends AppCompatActivity {
@@ -53,14 +63,19 @@ public class Chat extends AppCompatActivity {
     String receiverRoom;
     ArrayList<Messages>messagesArrayList;
     messagesAdapter adapter;
-    FcmNotificationsSender notificationsSender;
-    String postUrl = "https://fcm.googleapis.com/fcm/send";
-    String fcmServerKey ="AAAAdq4Pl4c:APA91bGUShicc2EjdAHZZv0yBp3JOLSLh7IDg1LbchM-tPKFrnP12nlK4Mo8CoCt81BljmMdQk9tZefl-LgbHiX49db0_AwgLXjFA-nAXMUEAJkInZWD0EgEFBcFxzm0bnPhUi_ZMxHg";
+   //Here Firebase Messaging Service Variable starts
+    final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
+    final private String serverKey ="AAAAdq4Pl4c:APA91bGUShicc2EjdAHZZv0yBp3JOLSLh7IDg1LbchM-tPKFrnP12nlK4Mo8CoCt81BljmMdQk9tZefl-LgbHiX49db0_AwgLXjFA-nAXMUEAJkInZWD0EgEFBcFxzm0bnPhUi_ZMxHg";
+    final private String contentType = "application/json";
+    final String TAG = "NOTIFICATION TAG";
+
+    String NOTIFICATION_TITLE;
+    String NOTIFICATION_MESSAGE;
+    String TOPIC;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        notificationsSender=new FcmNotificationsSender();
       //  FirebaseMessaging.getInstance().subscribeToTopic("all");
         Initialization();
         performAction();
@@ -164,136 +179,53 @@ public class Chat extends AppCompatActivity {
                     }
                 });
 
-            //   getToken(Message,consultantUID,senderRoom);
-              //  preparedNotificationMessage(senderRoom,Message);
             }
 
         });
-    }
-/*    private void preparedNotificationMessage(String chatID, String message){
-        // When User seller Change The Order Status In Progress/Completed/Cancelled, Sand Notification To Buyer
-
-        // Prepare Data For Notification
-        String NOTIFICATION_TOPIC = "/topics/" + notificationsSender.FCM_TOPIC; // Must Be Same Subscribed By User
-        String NOTIFICATION_TITLE = "Business Consultant";
-        String NOTIFICATION_MESSAGE = ""+message;
-
-        // Prepare JSON (What To Send And Where To Sand)
-        JSONObject notificationJo = new JSONObject();
-        JSONObject notificationBodyJo = new JSONObject();
-
+        //Firebase Notification Service
+        TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
+        NOTIFICATION_TITLE = Name.getText().toString();
+        NOTIFICATION_MESSAGE = textMessage.getText().toString();
+        JSONObject notification = new JSONObject();
+        JSONObject notifcationBody = new JSONObject();
         try {
+            notifcationBody.put("title", NOTIFICATION_TITLE);
+            notifcationBody.put("message", NOTIFICATION_MESSAGE);
 
-            // What To Sand
-            notificationBodyJo.put("hisID", consultantUID);
-            // Since We Are Logged In As Seller To Change Order Status So Current User uid Is Seller uid
-            notificationBodyJo.put("uid", firebaseAuth.getUid());
-            notificationBodyJo.put("chatID",chatID);
-            notificationBodyJo.put("notificationTitle", NOTIFICATION_TITLE);
-            notificationBodyJo.put("notificationMessage", NOTIFICATION_MESSAGE);
-
-            // Where To Sand
-            notificationJo.put("to", NOTIFICATION_TOPIC); // To All who Subscribed To This Topic
-            notificationJo.put("data", notificationBodyJo);
+            notification.put("to", TOPIC);
+            notification.put("data", notifcationBody);
+        } catch (JSONException e) {
+            Log.e(TAG, "onCreate: " + e.getMessage() );
         }
-        catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        sendFcmNotification(notificationJo);
+        sendNotification(notification);
     }
-
-    private void sendFcmNotification(JSONObject notificationJo) {
-        // Send Volley Request
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://fcm.googleapis.com/fcm/send", notificationJo, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // Notification Sent
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // Notification Failed
-            }
-        }){
+    private void sendNotification(JSONObject notification) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i(TAG, "onResponse: " + response.toString());
+                        Name.setText("");
+                        textMessage.setText("");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Chat.this, "Request error", Toast.LENGTH_LONG).show();
+                        Log.i(TAG, "onErrorResponse: Didn't work");
+                    }
+                }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-
-                // Put Required Headers
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type","application/json");
-                headers.put("Authorization","key" + notificationsSender.FCM_TOPIC);
-                return headers;
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization", serverKey);
+                params.put("Content-Type", contentType);
+                return params;
             }
         };
-
-        // Enque The Volley Request
-        Volley.newRequestQueue(this).add(jsonObjectRequest);
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
-    //2nd Method
- */
- /*   private void getToken(String message, String hisID, String chatID) {
-        String Title="Business Consultant";
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Users").child(firebaseAuth.getUid());
-        database.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String token = snapshot.child("token").getValue().toString();
-
-
-                JSONObject to = new JSONObject();
-                JSONObject data = new JSONObject();
-                try {
-                    data.put("title", Title);
-                    data.put("message", message);
-                    data.put("hisID", hisID);
-                    data.put("chatID", chatID);
-                    to.put("to", token);
-                    to.put("data", data);
-
-                    sendNotification(to);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void sendNotification(JSONObject to) {
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, postUrl, to, response -> {
-            Log.d("notification", "sendNotification: " + response);
-        }, error -> {
-            Log.d("notification", "sendNotification: " + error);
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-
-                Map<String, String> map = new HashMap<>();
-                map.put("Authorization", "key=" + fcmServerKey);
-                map.put("Content-Type", "application/json");
-                return map;
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "application/json";
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        request.setRetryPolicy(new DefaultRetryPolicy(30000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        requestQueue.add(request);
-    }  */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
