@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -48,6 +49,7 @@ public class Consultant_Dashboard extends AppCompatActivity{
         initialize();
         performAction();
         bottomNagivationBar();
+        subscribeToTopic();
     }
     @Override
     protected void onStart() {
@@ -233,6 +235,9 @@ public class Consultant_Dashboard extends AppCompatActivity{
 
                     }
                 });
+    }
+    private void subscribeToTopic(){
+        FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getUid());
     }
     
 }

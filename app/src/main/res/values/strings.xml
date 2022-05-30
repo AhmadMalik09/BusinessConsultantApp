@@ -1,9 +1,27 @@
 <resources>
     <string name="app_name">Business Consultant</string>
-    <string name="About_real_estate">Real estate is property consisting of land and the buildings on it, along with its natural resources such as crops, minerals or water; immovable property of this nature; an interest vested in this an item of real property, buildings or housing in general.</string>
-    <string name="oppertunities">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</string>
-    <string name="Profit_Loss">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</string>
-    <string name="oppertunities_against_investment">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</string>
+    <string name="PrivacyPolicy">A properly written Privacy Policy tells customers what data you collect about them when they engage with your business (e.g., through your website) or purchase one of your products/services, and why you are collecting that information. It also lets people know how long their information will be stored, who can access these records and more.
+
+In todays business world, companies depend heavily on data and information derived from it. Indeed, information is essential for all company employees, from the top executives to the operations level.
+
+Protecting data, especially private, personal information, is crucial in a complex world where so much depends upon it. The most important step for business owners to protect their customers data is to create a concise and transparent Privacy Policy.
+
+So, a good Privacy Policy should outline what data is being collected and explain why you are collecting it, who has access to it, and the time frame during which you plan to store it. It should also include any third parties with whom your company shares personal or private information, as well as any steps taken to ensure the security of such information.
+
+There are two main reasons why you need a Privacy Policy:
+
+✓ Privacy Policies are legally required. A Privacy Policy is required by global privacy laws if you collect or use personal information.
+
+✓ Consumers expect to see them: Place your Privacy Policy link in your website footer, and anywhere else where you request personal information.
+
+Generate an up-to-date 2022 Privacy Policy for your business website and mobile app with our Privacy Policy Generator.
+
+One of our many testimonials:
+
+"I needed an updated Privacy Policy for my website with GDPR coming up. I didn't want to try and write one myself, so TermsFeed was really helpful. I figured it was worth the cost for me, even though I'm a small fry and don't have a big business. Thanks for making it easy."
+
+Stephanie P. generated a Privacy Policy</string>
+
     <string name="default_web_client_id1" translatable="false">509726398343-v5na08qr549qi5dhnd4h8p5sno9oi3sg.apps.googleusercontent.com</string>
     <string name="facebook_app_id">1234</string>
     <string name="fb_login_protocol_scheme">fb1234</string>

@@ -2,7 +2,6 @@ package pk.edu.uiit.businessconsultant.Activites;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,9 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,7 +43,6 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 import pk.edu.uiit.businessconsultant.Adapters.messagesAdapter;
 import pk.edu.uiit.businessconsultant.ModelClasses.Messages;
-import pk.edu.uiit.businessconsultant.Notifications.MySingleton;
 import pk.edu.uiit.businessconsultant.R;
 
 public class Chat extends AppCompatActivity {
@@ -63,21 +64,19 @@ public class Chat extends AppCompatActivity {
     String receiverRoom;
     ArrayList<Messages>messagesArrayList;
     messagesAdapter adapter;
+    String name; //Name of the person who message you
    //Here Firebase Messaging Service Variable starts
     final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
-    final private String serverKey ="AAAAdq4Pl4c:APA91bGUShicc2EjdAHZZv0yBp3JOLSLh7IDg1LbchM-tPKFrnP12nlK4Mo8CoCt81BljmMdQk9tZefl-LgbHiX49db0_AwgLXjFA-nAXMUEAJkInZWD0EgEFBcFxzm0bnPhUi_ZMxHg";
-    final private String contentType = "application/json";
-    final String TAG = "NOTIFICATION TAG";
+    RequestQueue requestQueue;
 
-    String NOTIFICATION_TITLE;
-    String NOTIFICATION_MESSAGE;
-    String TOPIC;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
       //  FirebaseMessaging.getInstance().subscribeToTopic("all");
         Initialization();
+     //   subscribeToTopic();
+        getUserName();
         performAction();
         sendMessges();
         goForRating();
@@ -129,6 +128,9 @@ public class Chat extends AppCompatActivity {
                     String accountType = ""+ds.child("accountType").getValue();
                     if (accountType.equals("User")){
                         userProfileImage=snapshot.child("profileImage").getValue().toString();
+                        //this name will be use for a person who message you
+                        name=snapshot.child("name").getValue().toString();
+
                     }
 
                 }
@@ -154,9 +156,6 @@ public class Chat extends AppCompatActivity {
                 }
                 textMessage.setText("");
                 Date date= new Date();
-          /*      String Title ="Business Consultant";
-                FcmNotificationsSender notificationsSender=new FcmNotificationsSender("/topics/all",Title,textMessage.getText().toString()
-                        ,getApplicationContext(),Chat.this);  */
                 Messages messages=new Messages(Message, UserID,date.getTime());
                 database=FirebaseDatabase.getInstance();
                 database.getReference().child("Chats")
@@ -172,7 +171,7 @@ public class Chat extends AppCompatActivity {
                                 .push().setValue(messages).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-
+                                    sentNotification(Message);
                             }
                         });
 
@@ -182,50 +181,65 @@ public class Chat extends AppCompatActivity {
             }
 
         });
-        //Firebase Notification Service
-        TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
-        NOTIFICATION_TITLE = Name.getText().toString();
-        NOTIFICATION_MESSAGE = textMessage.getText().toString();
-        JSONObject notification = new JSONObject();
-        JSONObject notifcationBody = new JSONObject();
-        try {
-            notifcationBody.put("title", NOTIFICATION_TITLE);
-            notifcationBody.put("message", NOTIFICATION_MESSAGE);
 
-            notification.put("to", TOPIC);
-            notification.put("data", notifcationBody);
+    }
+
+    private void sentNotification(String message) {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("to","/topics/"+consultantUID);
+            JSONObject jsonObject1=new JSONObject();
+            jsonObject1.put("title","Message From "+name);
+            jsonObject1.put("body",message);
+            jsonObject.put("notification",jsonObject1);
+            JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST,FCM_API, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText(Chat.this, "Notification sent", Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                  Toast.makeText(Chat.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+             /*       NetworkResponse response = error.networkResponse;
+                    String errorMsg = "";
+                    if(response != null && response.data != null){
+                        String errorString = new String(response.data);
+                        Log.i("log error", errorString);  } */
+
+                }
+            }){
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String>map=new HashMap<>();
+                    map.put("content-type","application/json");
+                    map.put("authorization","key=AAAAdq4Pl4c:APA91bGUShicc2EjdAHZZv0yBp3JOLSLh7IDg1LbchM-tPKFrnP12nlK4Mo8CoCt81BljmMdQk9tZefl-LgbHiX49db0_AwgLXjFA-nAXMUEAJkInZWD0EgEFBcFxzm0bnPhUi_ZMxHg");
+                    return map;
+                }
+            };
+            requestQueue.add(request);
         } catch (JSONException e) {
-            Log.e(TAG, "onCreate: " + e.getMessage() );
+            e.printStackTrace();
         }
-        sendNotification(notification);
     }
-    private void sendNotification(JSONObject notification) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(FCM_API, notification,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i(TAG, "onResponse: " + response.toString());
-                        Name.setText("");
-                        textMessage.setText("");
+private void getUserName(){
+    DatabaseReference reference=database.getReference().child("Users");
+    reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
+            .addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        //this name will be use for a person who message you
+                        name = ds.child("name").getValue().toString();
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Chat.this, "Request error", Toast.LENGTH_LONG).show();
-                        Log.i(TAG, "onErrorResponse: Didn't work");
-                    }
-                }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Authorization", serverKey);
-                params.put("Content-Type", contentType);
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
-    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+}
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -285,5 +299,6 @@ public class Chat extends AppCompatActivity {
         database=FirebaseDatabase.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
         backButton=(ImageButton) findViewById(R.id.backBtn);
+        requestQueue= Volley.newRequestQueue(this);
     }
 }

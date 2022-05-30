@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import pk.edu.uiit.businessconsultant.R;
 public class SettingActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     TextView updatePass,privacyPolicy,howToUse,logout;
+    TextView privacyPolicyAns;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class SettingActivity extends AppCompatActivity {
         privacyPolicy=(TextView) findViewById(R.id.tv2);
         howToUse=(TextView) findViewById(R.id.tv3);
         logout=(TextView) findViewById(R.id.tv4);
+        privacyPolicyAns=(TextView) findViewById(R.id.privacypolicy);
 
     }
     public void performAction(){
@@ -71,6 +74,14 @@ public class SettingActivity extends AppCompatActivity {
                 AlertDialog alertDialog=builder.create();
                 alertDialog.show();
 
+            }
+        });
+        //Show Privacy Policy
+        privacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                privacyPolicyAns.setVisibility(View.VISIBLE);
+                privacyPolicyAns.setMovementMethod(new ScrollingMovementMethod());
             }
         });
     }

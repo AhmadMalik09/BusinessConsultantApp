@@ -24,7 +24,9 @@
         android:paddingRight="220dp"
         android:text="Name"
         android:textColor="@color/white"
-        android:textSize="25sp"></TextView>
+        android:textSize="25sp">
+
+    </TextView>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,8 +44,6 @@
         android:paddingTop="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/businesscover">
-
-
     </ImageView>
 
     <RelativeLayout
@@ -148,8 +148,8 @@
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/agriculture"
                 android:paddingLeft="12dp"
-                android:paddingRight="12dp"
                 android:paddingTop="5dp"
+                android:paddingRight="12dp"
                 android:paddingBottom="5dp"
                 android:text="\nAgriculture"
                 android:textColor="@color/black" />
@@ -166,6 +166,7 @@
                 android:textColor="@color/black" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/third_row"
             android:layout_width="match_parent"
@@ -181,10 +182,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/square"
-                android:drawableTop="@drawable/laptop"
+                android:drawableTop="@drawable/startup"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp"
                 android:paddingTop="5dp"
+                android:paddingRight="20dp"
                 android:paddingBottom="5dp"
                 android:text="\nIT"
                 android:textColor="@color/black" />

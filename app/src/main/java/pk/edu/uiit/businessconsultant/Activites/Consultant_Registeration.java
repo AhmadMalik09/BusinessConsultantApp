@@ -110,7 +110,7 @@ public class Consultant_Registeration extends AppCompatActivity {
         Degree= Qualification.getText().toString().trim();
         Specifitication = specification.getText().toString().trim();
         accountType="Consultant";
-        profileImage=Imageuri.toString();
+
      if (TextUtils.isEmpty(Name)) {
          Toast.makeText(Consultant_Registeration.this, "Enter Full Name!", Toast.LENGTH_SHORT).show();
          return;
@@ -171,6 +171,7 @@ public class Consultant_Registeration extends AppCompatActivity {
     }
 
     private void saverFirebaseData() {
+        profileImage=Imageuri.toString();
         progressDialog.setTitle("Saving Account Information...");
     //    String timeStamp = "" + System.currentTimeMillis();
         //Saving Data Without Image

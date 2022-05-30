@@ -11,29 +11,48 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import pk.edu.uiit.businessconsultant.Activites.Chat;
 import pk.edu.uiit.businessconsultant.R;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private final String ADMIN_CHANNEL_ID = "admin_channel";
-    private static final String TAG = "mFirebaseIIDService";
-    private static final String SUBSCRIBE_TO = "userABC";
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     @Override
-    public void onNewToken(String s) {
-        Log.e("NEW_TOKEN", s);
+    public void onNewToken(@NonNull String token) {
+        updateToken(token);
+        super.onNewToken(token);
     }
+private void updateToken(String token){
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    if (firebaseAuth.getCurrentUser() != null) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference.orderByChild("uid").equalTo(firebaseAuth.getUid());
+        Map<String, Object> map = new HashMap<>();
+        map.put("token", token);
+        databaseReference.updateChildren(map);
+    }
+
+}
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         final Intent intent = new Intent(this, Chat.class);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         int notificationID = new Random().nextInt(3000);
@@ -51,14 +70,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(),
-                R.drawable.welcome_icon);
+                R.drawable.logo1);
 
         Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
-                .setSmallIcon(R.drawable.welcome_icon)
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "admin_channel")
+                .setSmallIcon(R.drawable.logo1)
                 .setLargeIcon(largeIcon)
-                .setContentTitle(remoteMessage.getData().get("title"))
-                .setContentText(remoteMessage.getData().get("message"))
+                .setContentTitle(remoteMessage.getNotification().getTitle())
+                .setContentText(remoteMessage.getNotification().getBody())
                 .setAutoCancel(true)
                 .setSound(notificationSoundUri)
                 .setContentIntent(pendingIntent);
@@ -76,7 +95,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         String adminChannelDescription = "Device to devie notification";
 
         NotificationChannel adminChannel;
-        adminChannel = new NotificationChannel(ADMIN_CHANNEL_ID, adminChannelName, NotificationManager.IMPORTANCE_HIGH);
+        adminChannel = new NotificationChannel("admin_channel", adminChannelName, NotificationManager.IMPORTANCE_HIGH);
         adminChannel.setDescription(adminChannelDescription);
         adminChannel.enableLights(true);
         adminChannel.setLightColor(Color.RED);
@@ -84,6 +103,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (notificationManager != null) {
             notificationManager.createNotificationChannel(adminChannel);
         }
-
     }
+
 }

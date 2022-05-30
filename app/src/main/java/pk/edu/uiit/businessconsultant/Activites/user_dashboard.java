@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import pk.edu.uiit.businessconsultant.R;
 
@@ -37,7 +38,8 @@ public class user_dashboard extends AppCompatActivity {
         setContentView(R.layout.user_dashboard);
 
         initialize();
-        action();
+        performAction();
+        subscribeToTopic();
     }
     @Override
    public void onStart(){
@@ -77,7 +79,7 @@ public class user_dashboard extends AppCompatActivity {
                     }
                 });
     }
-    private void action(){
+    private void  performAction(){
         real_estate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +164,9 @@ public class user_dashboard extends AppCompatActivity {
 
             }
         });
+    }
+    private void subscribeToTopic(){
+        FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getUid());
     }
     private void initialize(){
         real_estate=(Button) findViewById(R.id.real_estate);

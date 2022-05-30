@@ -178,7 +178,7 @@ public class register extends AppCompatActivity {
                 email = etEmail.getText().toString();
                 password = etPass.getText().toString();
                 accountType="User";
-                profileImage=Imageuri.toString();
+
 
                 // Set Validations of Data
 
@@ -232,6 +232,7 @@ public class register extends AppCompatActivity {
             }
 
             private void saverFirebaseData() {
+                profileImage=Imageuri.toString();
                 progressDialog.setTitle("Saving Account Information...");
                 String timeStamp = "" + System.currentTimeMillis();
                 //Saving Data Without Image

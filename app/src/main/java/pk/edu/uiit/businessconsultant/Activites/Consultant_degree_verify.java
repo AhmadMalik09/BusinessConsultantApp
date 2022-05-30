@@ -118,8 +118,8 @@ private void saveQualificationDataToFirbase() {
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("DegreeImg", "" + downloadImageUri1); // URL Of Uploaded Image
                         //Save Data in Database
-                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Consultant_Qualifications");
-                        reference.child(firebaseAuth.getUid()+"~Degree~").setValue(hashMap)
+                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
+                        reference.child(firebaseAuth.getUid()+"~Consultant~").child("Qualification").child("Degree").setValue(hashMap)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
@@ -166,8 +166,8 @@ private void saveSpecificationsData(){
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("Consultant_Certificate", "" + downloadImageUri); // URL Of Uploaded Image
                         //Save Data in Database
-                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Consultant_Qualifications");
-                        reference.child(firebaseAuth.getUid()+"~Certificate~").setValue(hashMap)
+                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
+                        reference.child(firebaseAuth.getUid()+"~Consultant~").child("Qualification").child("Specification").setValue(hashMap)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
