@@ -72,7 +72,7 @@ public class ECommerce extends AppCompatActivity {
         });
         recyclerView=(RecyclerView) findViewById(R.id.QA);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter=new dataAdapter(ECommerce.this,infoArrayList);
         recyclerView.setAdapter(adapter);

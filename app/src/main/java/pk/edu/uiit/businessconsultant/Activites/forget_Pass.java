@@ -1,7 +1,6 @@
 package pk.edu.uiit.businessconsultant.Activites;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -52,8 +51,7 @@ public class forget_Pass extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(forget_Pass.this,login.class);
-                startActivity(intent);
+                onBackPressed();
                 finish();
             }
         });

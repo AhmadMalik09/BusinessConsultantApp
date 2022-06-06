@@ -48,7 +48,6 @@ public class Consultant_Registeration extends AppCompatActivity {
     String CNIC_No;
     String Degree;
     String Specifitication;
-    String profileImage;
     String  accountType;
     FloatingActionButton uploadProfilePic;
     Uri Imageuri;
@@ -126,7 +125,7 @@ public class Consultant_Registeration extends AppCompatActivity {
          Toast.makeText(Consultant_Registeration.this, "Please Enter Valid Email!", Toast.LENGTH_SHORT).show();
          return;
      }
-     if (Password.length() <= 6) {
+     if (!(Password.length() >= 6) ){
          Toast.makeText(Consultant_Registeration.this, "Password Must be atleast 6 characters long!", Toast.LENGTH_SHORT).show();
          return;
      }
@@ -140,6 +139,18 @@ public class Consultant_Registeration extends AppCompatActivity {
      }
      if (TextUtils.isEmpty(Specifitication)) {
          Toast.makeText(Consultant_Registeration.this, "Enter Your Certification!", Toast.LENGTH_SHORT).show();
+         return;
+     }
+     if(!Password.matches("(.*[A-Z].*)")){
+         Toast.makeText(Consultant_Registeration.this, "Password have atleast One Capital Latter", Toast.LENGTH_SHORT).show();
+         return;
+     }
+     if(!Password.matches("(.*[0-9].*)")){
+         Toast.makeText(Consultant_Registeration.this, "Password have atleast One Number", Toast.LENGTH_SHORT).show();
+         return;
+     }
+     if(!Password.matches("^(?=.*[_.()]).*$")){
+         Toast.makeText(Consultant_Registeration.this, "Password have atleast One Special Character", Toast.LENGTH_SHORT).show();
          return;
      }
 
@@ -171,12 +182,11 @@ public class Consultant_Registeration extends AppCompatActivity {
     }
 
     private void saverFirebaseData() {
-        profileImage=Imageuri.toString();
         progressDialog.setTitle("Saving Account Information...");
     //    String timeStamp = "" + System.currentTimeMillis();
         //Saving Data Without Image
         if(Imageuri==null){
-            FirebaseHelper firebaseHelper=new FirebaseHelper(firebaseAuth.getUid(),consultantField,Name,Email,Phone_No,Password,CNIC_No,Degree,Specifitication,profileImage,accountType);
+            FirebaseHelper firebaseHelper=new FirebaseHelper(firebaseAuth.getUid(),consultantField,Name,Email,Phone_No,Password,CNIC_No,Degree,Specifitication,"",accountType);
          /*   HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("uid"," "+ firebaseAuth.getUid());
             hashMap.put("Field", "" + consultantField);
@@ -225,20 +235,7 @@ public class Consultant_Registeration extends AppCompatActivity {
                             while (!uriTask.isSuccessful());
                             Uri downloadImageUri=uriTask.getResult();
                             if(uriTask.isSuccessful()){
-                                FirebaseHelper firebaseHelper=new FirebaseHelper(firebaseAuth.getUid(),consultantField,Name,Email,Phone_No,Password,CNIC_No,Degree,Specifitication,profileImage,accountType);
-                          /*      HashMap<String, Object> hashMap = new HashMap<>();
-                                hashMap.put("uid"," "+ firebaseAuth.getUid());
-                                hashMap.put("Field", "" + consultantField);
-                                hashMap.put("Name", "" + Name);
-                                hashMap.put("Email", "" + Email);
-                                hashMap.put("Phone_No", "" + Phone_No);
-                                hashMap.put("Password", "" + Password);
-                                hashMap.put("CNIC", "" + CNIC_No);
-                                hashMap.put("Qualification", "" + Degree);
-                                hashMap.put("Specification",""+ Specifitication);
-                                hashMap.put("accountType", "Consultant");
-                                hashMap.put("profileImage", "" + downloadImageUri); // URL Of Uploaded Image  */
-                                //Save Data in Database
+                                FirebaseHelper firebaseHelper=new FirebaseHelper(firebaseAuth.getUid(),consultantField,Name,Email,Phone_No,Password,CNIC_No,Degree,Specifitication,""+downloadImageUri,accountType);
                                 DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
                                 reference.child(firebaseAuth.getUid()+"~Consultant~").setValue(firebaseHelper)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {

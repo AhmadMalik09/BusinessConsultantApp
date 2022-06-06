@@ -95,7 +95,8 @@ public class loading_users extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(loading_users.this, Consultant_Dashboard.class));
+                onBackPressed();
+                finish();
             }
         });
 

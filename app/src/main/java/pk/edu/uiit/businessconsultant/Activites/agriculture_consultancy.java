@@ -64,7 +64,7 @@ public class agriculture_consultancy extends AppCompatActivity {
         });
         recyclerView=(RecyclerView) findViewById(R.id.QA);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter=new dataAdapter(agriculture_consultancy.this,infoArrayList);
         recyclerView.setAdapter(adapter);

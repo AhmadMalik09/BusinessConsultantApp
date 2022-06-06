@@ -19,9 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import pk.edu.uiit.businessconsultant.R;
-import pk.edu.uiit.businessconsultant.Activites.agriculture_consultancy;
 import pk.edu.uiit.businessconsultant.Activites.login;
+import pk.edu.uiit.businessconsultant.R;
 
 public class loading_Consultants extends AppCompatActivity {
     ImageView backBtn;
@@ -71,7 +70,8 @@ public class loading_Consultants extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(loading_Consultants.this, agriculture_consultancy.class));
+                onBackPressed();
+                finish();
             }
         });
 

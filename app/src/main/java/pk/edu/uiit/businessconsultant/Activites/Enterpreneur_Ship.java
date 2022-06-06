@@ -64,7 +64,7 @@ public class Enterpreneur_Ship extends AppCompatActivity {
         });
         recyclerView=(RecyclerView) findViewById(R.id.QA);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter=new dataAdapter(Enterpreneur_Ship.this,infoArrayList);
         recyclerView.setAdapter(adapter);

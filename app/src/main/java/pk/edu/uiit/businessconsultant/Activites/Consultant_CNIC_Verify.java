@@ -114,12 +114,13 @@ private void  saveCNIC_Front_ToFirbase() {
                         hashMap.put("CNIC_Front", "" + downloadImageUri1); // URL Of Uploaded Image
 
                         //Save Data in Database
-                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
-                        reference.child(firebaseAuth.getUid()+"~Consultant~").child("CNIC").child("CNIC-FRONT").setValue(hashMap)
+                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Consultant_CNIC");
+                        reference.child(firebaseAuth.getUid()+"~CNIC_Front~").setValue(hashMap)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         progressDialog.dismiss();
+
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
@@ -161,8 +162,8 @@ private void  saveCNIC_Back_ToFirebase(){
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("CNIC_Back", "" + downloadImageUri); // URL Of Uploaded Image
                         //Save Data in Database
-                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
-                        reference.child(firebaseAuth.getUid()+"~Consultant~").child("CNIC").child("CNIC-BACK").setValue(hashMap)
+                        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Consultant_CNIC");
+                        reference.child(firebaseAuth.getUid()+"~CNIC Back~").setValue(hashMap)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {

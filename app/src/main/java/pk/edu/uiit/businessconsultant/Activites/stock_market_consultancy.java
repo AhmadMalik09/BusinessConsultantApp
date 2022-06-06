@@ -67,7 +67,7 @@ public class stock_market_consultancy extends AppCompatActivity {
         });
         recyclerView = (RecyclerView) findViewById(R.id.QA);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new dataAdapter(stock_market_consultancy.this, infoArrayList);
         recyclerView.setAdapter(adapter);

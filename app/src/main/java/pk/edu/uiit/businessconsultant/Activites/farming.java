@@ -70,7 +70,7 @@ public class farming extends AppCompatActivity {
         });
         recyclerView=(RecyclerView) findViewById(R.id.QA);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter=new dataAdapter(farming.this,infoArrayList);
         recyclerView.setAdapter(adapter);

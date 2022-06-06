@@ -1,8 +1,10 @@
 package pk.edu.uiit.businessconsultant.Adapters;
 
 import android.content.Context;
+import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ public class dataAdapter extends RecyclerView.Adapter<dataAdapter.viewHolder> {
     Context IT;
     Context realEstate;
     Context stockMarket;
+    int i=0;
     public dataAdapter(ECommerce ecommerce, ArrayList<BusinessInfo> infoArrayList) {
         this.ecommerce = ecommerce;
         this.infoArrayList = infoArrayList;
@@ -86,10 +89,40 @@ public class dataAdapter extends RecyclerView.Adapter<dataAdapter.viewHolder> {
         holder.Question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.answer.setVisibility(View.VISIBLE);
+             //   holder.answer.setVisibility(View.VISIBLE);
+                i++;
+                Handler handler=new Handler() ;
+                Runnable runnable=new Runnable() {
+                    @Override
+                    public void run() {
+                        i=0;
+                    }
+                };
+                if(i==1){
+                    holder.answer.setVisibility(View.VISIBLE);
+                    handler.postDelayed(runnable,400);
+                }
+                else if(i==2){
+                    holder.answer.setVisibility(View.GONE);
+                    i=0;
+                }
+
             }
         });
-
+        holder.answer.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (v.getId() == R.id.answers) {
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                        case MotionEvent.ACTION_UP:
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
+                }
+                return false;
+            }
+        });
 
     }
 

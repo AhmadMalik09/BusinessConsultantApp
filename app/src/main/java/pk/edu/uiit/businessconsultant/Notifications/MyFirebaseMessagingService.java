@@ -12,19 +12,14 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import pk.edu.uiit.businessconsultant.Activites.Chat;
@@ -33,27 +28,24 @@ import pk.edu.uiit.businessconsultant.R;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    @Override
-    public void onNewToken(@NonNull String token) {
-        updateToken(token);
-        super.onNewToken(token);
-    }
-private void updateToken(String token){
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    if (firebaseAuth.getCurrentUser() != null) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.orderByChild("uid").equalTo(firebaseAuth.getUid());
-        Map<String, Object> map = new HashMap<>();
-        map.put("token", token);
-        databaseReference.updateChildren(map);
-    }
-
-}
+    String chatID,SnderID;
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-        final Intent intent = new Intent(this, Chat.class);
+        chatID = remoteMessage.getData().get("chatID");
+       SnderID = remoteMessage.getData().get("senderUid");
+
+       Intent intent = new Intent(this, Chat.class);
+        intent.putExtra("chatID", chatID);
+        intent.putExtra("senderUid", SnderID);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         int notificationID = new Random().nextInt(3000);
 
@@ -65,9 +57,7 @@ private void updateToken(String token){
             setupChannels(notificationManager);
         }
 
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+
 
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(),
                 R.drawable.logo1);

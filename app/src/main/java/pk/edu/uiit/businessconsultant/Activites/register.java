@@ -47,7 +47,6 @@ public class register extends AppCompatActivity {
     Button btnRegister;
     TextView register_consultant, login;
     String fullName, phoneNumber, email, password;
-    String profileImage;
     ImageView Google, Facebook;
     CircleImageView Userprofile;
     FloatingActionButton uploadProfilePic;
@@ -201,8 +200,20 @@ public class register extends AppCompatActivity {
                     Toast.makeText(register.this, "Please Enter Valid Email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (password.length() <= 6) {
-                    Toast.makeText(register.this, "Password Must be atleast 6 characters long!", Toast.LENGTH_SHORT).show();
+                if (!(password.length() >=8)) {
+                    Toast.makeText(register.this, "Password Must be atleast 8 characters long!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!password.matches("(.*[A-Z].*)")){
+                    Toast.makeText(register.this, "Password have atleast One Capital Latter", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!password.matches("(.*[0-9].*)")){
+                    Toast.makeText(register.this, "Password have atleast One Number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!password.matches("^(?=.*[_.()]).*$")){
+                    Toast.makeText(register.this, "Password have atleast One Special Character", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 createAccount();
@@ -232,12 +243,12 @@ public class register extends AppCompatActivity {
             }
 
             private void saverFirebaseData() {
-                profileImage=Imageuri.toString();
+
                 progressDialog.setTitle("Saving Account Information...");
                 String timeStamp = "" + System.currentTimeMillis();
                 //Saving Data Without Image
                 if (Imageuri == null) {
-                    Users user=new Users(firebaseAuth.getUid(),fullName,email,password,phoneNumber,accountType,profileImage);
+                    Users user=new Users(firebaseAuth.getUid(),fullName,email,password,phoneNumber,accountType,"");
                     // Setup Data to Save
                  /*   HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("uid", "" + firebaseAuth.getUid());
@@ -286,7 +297,7 @@ public class register extends AppCompatActivity {
                                     while (!uriTask.isSuccessful());
                                     Uri downloadImageUri=uriTask.getResult();
                                     if(uriTask.isSuccessful()){
-                                        Users user=new Users(firebaseAuth.getUid(),fullName,email,password,phoneNumber,accountType,profileImage);
+                                        Users user=new Users(firebaseAuth.getUid(),fullName,email,password,phoneNumber,accountType,""+downloadImageUri);
                                        /* HashMap<String, Object> hashMap = new HashMap<>();
                                         hashMap.put("uid", "" + firebaseAuth.getUid());
                                         hashMap.put("email", "" + email);

@@ -64,6 +64,7 @@ public class Chat extends AppCompatActivity {
     String receiverRoom;
     ArrayList<Messages>messagesArrayList;
     messagesAdapter adapter;
+    String chatID,senderID;
     String name; //Name of the person who message you
    //Here Firebase Messaging Service Variable starts
     final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
@@ -73,14 +74,23 @@ public class Chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-      //  FirebaseMessaging.getInstance().subscribeToTopic("all");
+
+
         Initialization();
-     //   subscribeToTopic();
         getUserName();
         performAction();
         sendMessges();
+        backButtonPressed();
         goForRating();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
+
     public void performAction(){
         consultantName= getIntent().getStringExtra("name");
         consultantPicture=getIntent().getStringExtra("profilePicture");
@@ -97,6 +107,9 @@ public class Chat extends AppCompatActivity {
         UserID=firebaseAuth.getUid();
         senderRoom=UserID +  consultantUID;
         receiverRoom=consultantUID+UserID;
+        // Get Data From Intent
+      //  senderRoom= getIntent().getStringExtra("chatID");
+      //  senderID= getIntent().getStringExtra("senderUid");
         // add linear layout manager
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
@@ -130,7 +143,6 @@ public class Chat extends AppCompatActivity {
                         userProfileImage=snapshot.child("profileImage").getValue().toString();
                         //this name will be use for a person who message you
                         name=snapshot.child("name").getValue().toString();
-
                     }
 
                 }
@@ -191,11 +203,13 @@ public class Chat extends AppCompatActivity {
             JSONObject jsonObject1=new JSONObject();
             jsonObject1.put("title","Message From "+name);
             jsonObject1.put("body",message);
+            jsonObject1.put("senderUid",firebaseAuth.getUid());
+            jsonObject1.put("chatID",senderID);
             jsonObject.put("notification",jsonObject1);
             JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST,FCM_API, jsonObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Toast.makeText(Chat.this, "Notification sent", Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(Chat.this, "Notification sent", Toast.LENGTH_SHORT).show();
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -240,18 +254,16 @@ private void getUserName(){
             });
 }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+  public void backButtonPressed(){
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
                 finish();
-
             }
         });
-    }
+  }
+
     public void goForRating(){
         //Set the visibility of Star Button
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -298,7 +310,7 @@ private void getUserName(){
         starBtn=(ImageView)findViewById(R.id.star);
         database=FirebaseDatabase.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
-        backButton=(ImageButton) findViewById(R.id.backBtn);
+        backButton=(ImageButton) findViewById(R.id.ChatBckButton);
         requestQueue= Volley.newRequestQueue(this);
     }
 }
