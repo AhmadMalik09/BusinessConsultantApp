@@ -102,6 +102,20 @@
             android:drawablePadding="4dp"
             android:background="@drawable/setting_tabs_design">
         </TextView>
+            <TextView
+                android:id="@+id/how_to_use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv3"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="@string/How_To_Use"
+                android:visibility="gone"
+                android:background="@drawable/invisible_textview_design"
+                android:padding="10dp"
+                android:scrollbars="vertical" >
+            </TextView>
         <TextView
             android:id="@+id/tv4"
             android:layout_width="match_parent"
@@ -110,7 +124,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="95dp"
+
             android:text="Logout"
             android:textColor="@color/black"
             android:padding="10dp"
@@ -118,7 +132,22 @@
             android:drawablePadding="4dp"
             android:background="@drawable/setting_tabs_design">
         </TextView>
-
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv4"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="95dp"
+                android:text="Help"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/help"
+                android:drawablePadding="4dp"
+                android:background="@drawable/setting_tabs_design">
+            </TextView>
   </LinearLayout>
     </ScrollView>
         <RelativeLayout

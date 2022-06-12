@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
     android:focusableInTouchMode="true"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -80,6 +84,17 @@
             android:hint="password"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputConfirmPass"
+        style="@style/parent.TextLayout"
+        android:layout_marginTop="@dimen/signup_text_margin_top">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etConfirmPass"
+            style="@style/modifiedEditText"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:hint="Retype password"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputPassword"
         style="@style/parent.TextLayout"
@@ -174,19 +189,15 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="20dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fbBtn"
-            android:src="@drawable/ic_facebook"/>
+
         <ImageView
             android:id="@+id/googleSigIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/googleicon"
-            android:layout_marginLeft="10dp"
         />
     </LinearLayout>
 
 
 </LinearLayout>
+</ScrollView>

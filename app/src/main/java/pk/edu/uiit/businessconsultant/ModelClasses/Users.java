@@ -6,20 +6,30 @@ public class Users {
     String uid;
     public String profileImage;
     String Password;
+    String confirmPassword;
     String Phone;
     String accountType;
 
     public Users() {
     }
 
-    public Users(String uid,String name, String email,String password,String phone, String accountType,String profileImage) {
+    public Users(String uid,String name, String email,String password,String confirmPassword,String phone, String accountType,String profileImage) {
         this.name = name;
         this.email = email;
         this.uid = uid;
         this.profileImage = profileImage;
         Password = password;
+        this.confirmPassword=confirmPassword;
         Phone = phone;
         this.accountType = accountType;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getName() {

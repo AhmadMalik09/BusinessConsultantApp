@@ -1,27 +1,66 @@
 <resources>
     <string name="app_name">Business Consultant</string>
-    <string name="PrivacyPolicy">A properly written Privacy Policy tells customers what data you collect about them when they engage with your business (e.g., through your website) or purchase one of your products/services, and why you are collecting that information. It also lets people know how long their information will be stored, who can access these records and more.
+    <string name="PrivacyPolicy">Privacy Policy
+Ahmad Ali, Muhammad Haseeb, and  Sodagar Ali built the Business Consultant app as a Free app. This SERVICE is provided by Ahmad Ali at no cost and is intended for use as is.
 
-In todays business world, companies depend heavily on data and information derived from it. Indeed, information is essential for all company employees, from the top executives to the operations level.
+This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.
 
-Protecting data, especially private, personal information, is crucial in a complex world where so much depends upon it. The most important step for business owners to protect their customers data is to create a concise and transparent Privacy Policy.
+If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
 
-So, a good Privacy Policy should outline what data is being collected and explain why you are collecting it, who has access to it, and the time frame during which you plan to store it. It should also include any third parties with whom your company shares personal or private information, as well as any steps taken to ensure the security of such information.
+The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which are accessible at Business Consultant unless otherwise defined in this Privacy Policy.
 
-There are two main reasons why you need a Privacy Policy:
+Information Collection and Use
 
-✓ Privacy Policies are legally required. A Privacy Policy is required by global privacy laws if you collect or use personal information.
+For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to A Business Consultant and the User. The information that I request will be retained on your device and is not collected by me in any way.
 
-✓ Consumers expect to see them: Place your Privacy Policy link in your website footer, and anywhere else where you request personal information.
+Log Data
 
-Generate an up-to-date 2022 Privacy Policy for your business website and mobile app with our Privacy Policy Generator.
+I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
 
-One of our many testimonials:
+Cookies
 
-"I needed an updated Privacy Policy for my website with GDPR coming up. I didn't want to try and write one myself, so TermsFeed was really helpful. I figured it was worth the cost for me, even though I'm a small fry and don't have a big business. Thanks for making it easy."
+Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device internal memory.
 
-Stephanie P. generated a Privacy Policy</string>
+This Service does not use these “cookies” explicitly. However, the app may use third-party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
 
+Service Providers
+
+I may employ third-party companies and individuals due to the following reasons:
+
+To facilitate our Service;
+To provide the Service on our behalf;
+To perform Service-related services; or
+To assist us in analyzing how our Service is used.
+I want to inform users of this Service that these third parties have access to their Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+
+Security
+
+I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+
+Links to Other Sites
+
+This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+
+Children Privacy
+
+I do not knowingly collect personally identifiable information from children. I encourage all children to never submit any personally identifiable information through the Application and/or Services. I encourage parents and legal guardians to monitor their children Internet usage and to help enforce this Policy by instructing their children never to provide personally identifiable information through the Application and/or Services without their permission. If you have reason to believe that a child has provided personally identifiable information to us through the Application and/or Services, please contact us. You must also be at least 16 years of age to consent to the processing of your personally identifiable information in your country (in some countries we may allow your parent or guardian to do so on your behalf).
+
+Changes to This Privacy Policy
+
+I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
+
+This policy is effective as of 2022-06-07</string>
+    <string name="How_To_Use">
+        "Portfolio":
+After registration go to portfolio tab and fill up the details. Because these details will showed to user as your portfolio . So complete your portfolio
+You can further edit your entered information from Profile Tab
+"Add Data":
+Click on the ADD DATA tab and add the useful information about your field. This info will be shown to the visitors. They can further contact you by chat based on your entered information
+"CHAT BOX":
+When new message comes there’s a notification appears Click on the notification or directly open the Chat box by clicking on the CHAT BOX TAB.
+"Review":
+When chat ends ask users to rate to your service by click on the STAR BUTTON than appears on users Chat Box not your. This review and Rating appears in your REVIEW TAB as well as in your portfolio that will be visible to all users.
+</string>
     <string name="default_web_client_id1" translatable="false">509726398343-v5na08qr549qi5dhnd4h8p5sno9oi3sg.apps.googleusercontent.com</string>
     <string name="facebook_app_id">1234</string>
     <string name="fb_login_protocol_scheme">fb1234</string>

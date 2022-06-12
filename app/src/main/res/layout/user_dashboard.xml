@@ -13,11 +13,11 @@
 
     <TextView
         android:id="@+id/useName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="20dp"
         android:paddingTop="10dp"
-        android:paddingRight="220dp"
+        android:paddingRight="250dp"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="25sp">
@@ -27,20 +27,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/logoutBtn"
-        android:layout_toRightOf="@id/useName"
+       android:layout_alignParentRight="true"
         android:src="@drawable/shutdown"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="10dp">
     </ImageView>
 
     <ImageView
         android:id="@+id/business_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/view"
         android:paddingTop="50dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/businesscover">
-    </ImageView>
+        android:src="@drawable/businesscover"></ImageView>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,12 +67,13 @@
 
         <LinearLayout
             android:id="@+id/first_row"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/oppertunities"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="3"
             android:orientation="horizontal">
 
             <Button
@@ -81,9 +82,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/property"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingRight="5dp"
+                android:paddingRight="10dp"
                 android:paddingBottom="5dp"
                 android:text="\nReal Estate"
                 android:textColor="@color/black" />
@@ -109,9 +110,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/cryptoc"
-                android:paddingLeft="5dp"
+                android:paddingLeft="25dp"
                 android:paddingTop="5dp"
-                android:paddingRight="5dp"
+                android:paddingRight="25dp"
                 android:paddingBottom="5dp"
                 android:text="\nCrypto"
                 android:textColor="@color/black" />
@@ -120,12 +121,13 @@
 
         <LinearLayout
             android:id="@+id/second_row"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/first_row"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="3"
             android:orientation="horizontal">
 
             <Button
@@ -134,7 +136,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/ecomm_icon"
-                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
                 android:text="\nE-Commerce"
                 android:textColor="@color/black" />
 
@@ -146,7 +151,7 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/agriculture"
-                android:paddingLeft="12dp"
+                android:paddingLeft="13dp"
                 android:paddingTop="5dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="5dp"
@@ -159,7 +164,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/farming"
-                android:padding="5dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="5dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="5dp"
 
                 android:text="\nFarming"
                 android:textColor="@color/black" />
@@ -168,12 +176,13 @@
 
         <LinearLayout
             android:id="@+id/third_row"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:weightSum="3"
             android:layout_below="@id/second_row"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:orientation="horizontal">
 
             <Button
@@ -182,9 +191,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/it_icon"
-                android:paddingLeft="20dp"
+                android:paddingLeft="25dp"
                 android:paddingTop="5dp"
-                android:paddingRight="20dp"
+                android:paddingRight="25dp"
                 android:paddingBottom="5dp"
                 android:text="\nIT"
                 android:textColor="@color/black" />
@@ -197,7 +206,7 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/square"
                 android:drawableTop="@drawable/startup"
-                android:paddingLeft="16dp"
+                android:paddingLeft="13dp"
                 android:paddingTop="8dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"

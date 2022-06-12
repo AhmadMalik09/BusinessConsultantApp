@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/To"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"
+       >
+    </TextView>
+
+    <EditText
+        android:id="@+id/emailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/To"
+        android:hint="businessConsultant_help@gmail.com"
+        android:padding="15dp"></EditText>
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subject"
+        android:layout_below="@id/emailAddress"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:layout_margin="15dp"
+       >
+    </TextView>
+
+    <EditText
+        android:id="@+id/writeSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subject"
+        android:hint="Write Subject Here"
+        android:padding="15dp"></EditText>
+
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Message"
+        android:layout_below="@id/writeSubject"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:layout_margin="15dp"
+    >
+    </TextView>
+
+    <EditText
+        android:id="@+id/Message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg"
+        android:gravity="start"
+        android:hint="Writher your message"
+        android:lines="15"
+        android:padding="15dp"></EditText>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSent"
+        android:layout_width="152dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/Message"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/login_button_design"
+        android:text="Send"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+</RelativeLayout>

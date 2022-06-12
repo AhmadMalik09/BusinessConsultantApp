@@ -91,8 +91,7 @@ public class View_profile extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(View_profile.this, Consultant_Dashboard.class);
-                startActivity(intent);
+              onBackPressed();
                 finish();
 
             }

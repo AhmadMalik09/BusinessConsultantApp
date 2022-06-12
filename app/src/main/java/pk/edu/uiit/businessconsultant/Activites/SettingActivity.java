@@ -22,8 +22,8 @@ import pk.edu.uiit.businessconsultant.R;
 
 public class SettingActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    TextView updatePass,privacyPolicy,howToUse,logout;
-    TextView privacyPolicyAns;
+    TextView updatePass,privacyPolicy,howToUse,logout,Help;
+    TextView privacyPolicyAns,HowToUse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,8 @@ public class SettingActivity extends AppCompatActivity {
         howToUse=(TextView) findViewById(R.id.tv3);
         logout=(TextView) findViewById(R.id.tv4);
         privacyPolicyAns=(TextView) findViewById(R.id.privacypolicy);
+        HowToUse=(TextView) findViewById(R.id.how_to_use);
+        Help=(TextView) findViewById(R.id.tv5);
 
     }
     public void performAction(){
@@ -81,7 +83,21 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 privacyPolicyAns.setVisibility(View.VISIBLE);
+                HowToUse.setVisibility(View.GONE);
                 privacyPolicyAns.setMovementMethod(new ScrollingMovementMethod());
+            }
+        });
+        howToUse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HowToUse.setVisibility(View.VISIBLE);
+                privacyPolicyAns.setVisibility(View.GONE);
+            }
+        });
+        Help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Email.class));
             }
         });
     }

@@ -17,6 +17,10 @@
         android:theme="@style/Theme.BusinessConsultant"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activites.Email"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name=".Activites.SettingActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -58,10 +62,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activites.forget_Pass"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Activites.Facebook_Login"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -149,7 +149,7 @@ public class Consultant_Registeration extends AppCompatActivity {
          Toast.makeText(Consultant_Registeration.this, "Password have atleast One Number", Toast.LENGTH_SHORT).show();
          return;
      }
-     if(!Password.matches("^(?=.*[_.()]).*$")){
+     if(!Password.matches("^(?=.*[_.()!@#$%^&*,<>;:'/€£¥₩•○●■♤♡◇♧》《¤▪︎☆]).*$")){
          Toast.makeText(Consultant_Registeration.this, "Password have atleast One Special Character", Toast.LENGTH_SHORT).show();
          return;
      }

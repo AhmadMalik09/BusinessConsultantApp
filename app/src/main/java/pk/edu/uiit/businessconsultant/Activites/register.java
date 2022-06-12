@@ -43,11 +43,11 @@ import pk.edu.uiit.businessconsultant.R;
 
 
 public class register extends AppCompatActivity {
-    EditText etName, etEmail, etPass, etPhone;
+    EditText etName, etEmail, etPass, etConfirmPass, etPhone;
     Button btnRegister;
     TextView register_consultant, login;
-    String fullName, phoneNumber, email, password;
-    ImageView Google, Facebook;
+    String fullName, phoneNumber, email, password,ConfirmPass;
+    ImageView Google;
     CircleImageView Userprofile;
     FloatingActionButton uploadProfilePic;
     Uri Imageuri;
@@ -148,14 +148,6 @@ public class register extends AppCompatActivity {
                 signIn();
             }
         });
-        Facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(register.this,Facebook_Login.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
-        });
         uploadProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,6 +168,7 @@ public class register extends AppCompatActivity {
                 phoneNumber = etPhone.getText().toString();
                 email = etEmail.getText().toString();
                 password = etPass.getText().toString();
+                ConfirmPass=etConfirmPass.getText().toString();
                 accountType="User";
 
 
@@ -196,6 +189,14 @@ public class register extends AppCompatActivity {
                     Toast.makeText(register.this, "Enter Your Email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(ConfirmPass.isEmpty()){
+                    Toast.makeText(this, "Retype Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!ConfirmPass.matches(password)){
+                    Toast.makeText(this, "Password not matched!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(register.this, "Please Enter Valid Email!", Toast.LENGTH_SHORT).show();
                     return;
@@ -212,7 +213,7 @@ public class register extends AppCompatActivity {
                     Toast.makeText(register.this, "Password have atleast One Number", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(!password.matches("^(?=.*[_.()]).*$")){
+                if(!password.matches("^(?=.*[_.()!@#$%^&*,<>;:'/€£¥₩•○●■♤♡◇♧》《¤▪︎☆]).*$")){
                     Toast.makeText(register.this, "Password have atleast One Special Character", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -248,7 +249,7 @@ public class register extends AppCompatActivity {
                 String timeStamp = "" + System.currentTimeMillis();
                 //Saving Data Without Image
                 if (Imageuri == null) {
-                    Users user=new Users(firebaseAuth.getUid(),fullName,email,password,phoneNumber,accountType,"");
+                    Users user=new Users(firebaseAuth.getUid(),fullName,email,password,ConfirmPass,phoneNumber,accountType,"");
                     // Setup Data to Save
                  /*   HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("uid", "" + firebaseAuth.getUid());
@@ -297,7 +298,7 @@ public class register extends AppCompatActivity {
                                     while (!uriTask.isSuccessful());
                                     Uri downloadImageUri=uriTask.getResult();
                                     if(uriTask.isSuccessful()){
-                                        Users user=new Users(firebaseAuth.getUid(),fullName,email,password,phoneNumber,accountType,""+downloadImageUri);
+                                        Users user=new Users(firebaseAuth.getUid(),fullName,email,password,ConfirmPass,phoneNumber,accountType,""+downloadImageUri);
                                        /* HashMap<String, Object> hashMap = new HashMap<>();
                                         hashMap.put("uid", "" + firebaseAuth.getUid());
                                         hashMap.put("email", "" + email);
@@ -365,6 +366,7 @@ public class register extends AppCompatActivity {
                 etName = findViewById(R.id.etName);
                 etEmail = findViewById(R.id.etEmail);
                 etPass = findViewById(R.id.etPass);
+                etConfirmPass=findViewById(R.id.etConfirmPass);
                 etPhone = findViewById(R.id.etPhone);
                 register_consultant = (TextView) findViewById(R.id.consultant_registeration);
                 login = (TextView) findViewById(R.id.go_login);
@@ -372,7 +374,6 @@ public class register extends AppCompatActivity {
                 uploadProfilePic=(FloatingActionButton) findViewById(R.id.profileBtn);
                 btnRegister = (Button) findViewById(R.id.btnRegister);
                 Google = (ImageView) findViewById(R.id.googleSigIn);
-                Facebook=(ImageView)findViewById(R.id.fbBtn);
                 // Initialization Of FirebaseAuth
                 firebaseAuth = FirebaseAuth.getInstance();
 
